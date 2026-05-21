@@ -12,7 +12,7 @@ import '../styles/global.css';
   <body class="bg-monolith-bg text-monolith-text-primary font-body">
     <header class="fixed top-0 left-0 right-0 z-30 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center">
       <a href="/" class="font-display text-xl md:text-2xl tracking-widest text-white no-underline z-30">МОНОЛИТ</a>
-      <button id="burger" class="z-50 flex flex-col gap-1.5 md:hidden">
+      <button id="burger" class="z-50 flex-col gap-1.5 hidden max-md:flex" style="display:none;">
         <span class="block w-6 h-px bg-white" id="burger-top"></span>
         <span class="block w-6 h-px bg-white" id="burger-mid"></span>
         <span class="block w-6 h-px bg-white" id="burger-bot"></span>
@@ -41,6 +41,10 @@ import '../styles/global.css';
     </main>
     <script>
       const burger = document.getElementById('burger');
+      if (window.innerWidth < 768) burger.style.display = 'flex';
+window.addEventListener('resize', () => {
+  burger.style.display = window.innerWidth < 768 ? 'flex' : 'none';
+});
       const menu = document.getElementById('mobile-menu');
       const topEl = document.getElementById('burger-top');
       const mid = document.getElementById('burger-mid');
