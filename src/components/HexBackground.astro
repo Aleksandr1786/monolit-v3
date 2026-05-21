@@ -66,7 +66,7 @@
       const cx = parseFloat(hex.getAttribute('data-cx'));
       const cy = parseFloat(hex.getAttribute('data-cy'));
       const dist = Math.sqrt((cx - width/2) ** 2 + (cy - height/2) ** 2);
-      const wave = Math.sin(dist * 0.015 + time) * 0.15 + 0.4;
+      const wave = Math.sin(dist * 0.015 + time) * 0.25 + 0.6;
       hex.setAttribute('opacity', wave);
     });
     requestAnimationFrame(animate);
@@ -87,12 +87,12 @@
       const dx = cx - mouseX;
       const dy = cy - mouseY;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 120;
+      const maxDist = 250;
       if (dist < maxDist) {
         const influence = 1 - dist / maxDist;
         hex.setAttribute('stroke', `rgba(200, 168, 130, ${influence * 0.8})`);
         hex.setAttribute('stroke-width', `${0.5 + influence * 1.5}`);
-        hex.setAttribute('opacity', `${0.4 + influence * 0.6}`);
+        hex.setAttribute('opacity', `${0.7 + influence * 0.6}`);
       } else {
         hex.setAttribute('stroke', '#2A2A3A');
         hex.setAttribute('stroke-width', '0.5');
