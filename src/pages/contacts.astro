@@ -1,0 +1,40 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout>
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24">
+    <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-6">Свяжитесь с нами</p>
+    <h1 class="heading-xl mb-6 text-3xl md:text-5xl lg:text-6xl">Контакты</h1>
+    <div class="divider mx-auto"></div>
+    <p class="text-monolith-text-secondary text-lg max-w-xl mb-16">
+      Начните с Нулевого Дня. Закончите домом, который понимает вас без слов.
+    </p>
+
+    <div class="bg-monolith-surface border border-monolith-border p-8 max-w-lg w-full text-left space-y-6 mb-12">
+      <div>
+        <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-1">Телефон</p>
+        <a href="tel:+79000000000" class="text-white text-lg hover:text-monolith-accent-warm transition-colors">+7 (900) 000-00-00</a>
+      </div>
+      <div>
+        <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-1">Email</p>
+        <a href="mailto:hello@monolit.ru" class="text-white text-lg hover:text-monolith-accent-warm transition-colors">hello@monolit.ru</a>
+      </div>
+      <div>
+        <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-1">Адрес</p>
+        <p class="text-white text-lg">Москва, ул. Архитектора, 1</p>
+      </div>
+    </div>
+
+    <form class="bg-monolith-surface border border-monolith-border p-8 max-w-lg w-full text-left space-y-6">
+      <h3 class="font-display text-xl text-white mb-2">Запланировать Нулевой День</h3>
+      <p class="text-monolith-text-muted text-sm mb-4">Оставьте контакты — мы перезвоним в течение часа.</p>
+      
+      <input type="text" placeholder="Имя" class="w-full bg-transparent border border-monolith-border px-4 py-3 text-white text-sm focus:outline-none focus:border-monolith-accent-warm transition-colors" />
+      <input type="tel" placeholder="Телефон" class="w-full bg-transparent border border-monolith-border px-4 py-3 text-white text-sm focus:outline-none focus:border-monolith-accent-warm transition-colors" />
+      <button type="submit" class="btn-monolith w-full">
+        Отправить
+      </button>
+    </form>
+  </section>
+</MainLayout>

@@ -1,0 +1,49 @@
+---
+---
+
+<section class="py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="heading-lg text-center mb-4">Пространства, которые мы уже создали</h2>
+    <p class="text-monolith-text-muted text-center mb-12 text-sm tracking-widest uppercase">Найдите свой образ</p>
+
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors active" data-filter="все">Все</button>
+      <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-filter="спальня">Спальни</button>
+      <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-filter="кухня">Кухни</button>
+      <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-filter="ванная">Ванные</button>
+      <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-filter="гостиная">Гостиные</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="portfolio-grid">
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="спальня">Спальня — Сканди</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="кухня">Кухня — Лофт</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="ванная">Ванная — Мрамор</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="гостиная">Гостиная — Классика</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="кухня">Кухня — Минимализм</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="спальня">Спальня — Тёплая</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.portfolio-item');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active', 'border-monolith-accent-warm', 'text-white'));
+      btn.classList.add('active', 'border-monolith-accent-warm', 'text-white');
+      
+      const filter = btn.dataset.filter;
+      items.forEach(item => {
+        if (filter === 'все' || item.dataset.category === filter) {
+          item.style.display = 'flex';
+          item.style.opacity = '1';
+        } else {
+          item.style.display = 'none';
+          item.style.opacity = '0';
+        }
+      });
+    });
+  });
+</script>

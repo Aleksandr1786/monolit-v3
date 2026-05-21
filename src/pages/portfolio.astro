@@ -1,0 +1,56 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout>
+  <section class="min-h-screen pt-24 px-6">
+    <div class="max-w-6xl mx-auto text-center mb-16">
+      <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-6">Наши работы</p>
+      <h1 class="heading-xl mb-6 text-3xl md:text-5xl lg:text-6xl">Портфолио</h1>
+      <div class="divider mx-auto"></div>
+      <p class="text-monolith-text-secondary text-lg max-w-xl mx-auto mb-12">
+        Пространства, которые мы уже создали. Найдите свой образ.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors active" data-filter="all">Все</button>
+        <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-filter="classic">Эхо классики</button>
+        <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-filter="industrial">Честная фактура</button>
+        <button class="filter-btn px-5 py-2 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-filter="minimal">Тишина и воздух</button>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-24" id="portfolio-grid">
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="classic">Гостиная — Классика</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="industrial">Кухня — Лофт</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="minimal">Спальня — Сканди</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="classic">Спальня — Классика</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="industrial">Гостиная — Индастриал</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="minimal">Кухня — Минимализм</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="classic">Ванная — Мрамор</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="industrial">Ванная — Бетон</div>
+      <div class="portfolio-item bg-monolith-surface h-72 flex items-center justify-center text-monolith-text-muted text-sm tracking-widest" data-category="minimal">Гостиная — Воздух</div>
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.portfolio-item');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active', 'border-monolith-accent-warm', 'text-white'));
+      btn.classList.add('active', 'border-monolith-accent-warm', 'text-white');
+      
+      const filter = btn.dataset.filter;
+      items.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

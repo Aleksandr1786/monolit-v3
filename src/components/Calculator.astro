@@ -1,0 +1,68 @@
+---
+---
+
+<section class="py-32 px-6 relative bg-monolith-bg/50">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="heading-lg mb-4">Спрогнозируйте стоимость</h2>
+    <p class="text-monolith-text-muted text-sm tracking-widest uppercase mb-12">Точность прогноза — 97%</p>
+
+    <div class="bg-monolith-surface border border-monolith-border p-8 text-left">
+      
+      <div class="mb-8">
+        <label class="text-monolith-text-secondary text-sm tracking-widest uppercase mb-3 block">Тип квартиры</label>
+        <div class="grid grid-cols-4 gap-3">
+          <button class="type-btn px-4 py-3 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors active" data-type="studio">Студия</button>
+          <button class="type-btn px-4 py-3 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-type="1room">1-комн.</button>
+          <button class="type-btn px-4 py-3 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-type="2room">2-комн.</button>
+          <button class="type-btn px-4 py-3 border border-monolith-border text-monolith-text-secondary text-xs uppercase tracking-widest hover:border-monolith-accent-warm hover:text-white transition-colors" data-type="3room">3-комн.</button>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <label class="text-monolith-text-secondary text-sm tracking-widest uppercase mb-3 block">Площадь: <span id="area-value" class="text-white">40</span> м²</label>
+        <input id="area-slider" type="range" min="25" max="120" value="40" class="w-full accent-monolith-accent-warm" />
+        <div class="flex justify-between text-monolith-text-muted text-xs mt-2">
+          <span>25 м²</span>
+          <span>120 м²</span>
+        </div>
+      </div>
+
+      <div class="border-t border-monolith-border pt-6 mb-6">
+        <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-2">Прогноз стоимости работ</p>
+        <p class="font-mono text-3xl text-white" id="price">375 000 ₽</p>
+      </div>
+
+      <a href="/zero-day" class="btn-monolith w-full no-underline">
+  Запланировать Нулевой День
+</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const slider = document.getElementById('area-slider');
+  const areaValue = document.getElementById('area-value');
+  const price = document.getElementById('price');
+  const typeBtns = document.querySelectorAll('.type-btn');
+
+  let currentType = 'studio';
+  const prices = { studio: 7500, '1room': 8500, '2room': 9500, '3room': 10500 };
+
+  function updatePrice() {
+    const area = parseInt(slider.value);
+    areaValue.textContent = area;
+    const total = area * prices[currentType];
+    price.textContent = total.toLocaleString('ru-RU') + ' ₽';
+  }
+
+  slider.addEventListener('input', updatePrice);
+
+  typeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      typeBtns.forEach(b => b.classList.remove('active', 'border-monolith-accent-warm', 'text-white'));
+      btn.classList.add('active', 'border-monolith-accent-warm', 'text-white');
+      currentType = btn.dataset.type;
+      updatePrice();
+    });
+  });
+</script>

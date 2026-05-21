@@ -1,0 +1,58 @@
+---
+---
+
+<section class="manifesto py-32 px-6 max-w-4xl mx-auto relative">
+  <div class="absolute inset-0 bg-monolith-bg/50 pointer-events-none"></div>
+  <div class="relative z-10">
+  
+  <div class="manifesto-block mb-32 opacity-0 translate-y-10 transition-all duration-1000" data-animate>
+    <h3 class="font-display text-3xl text-white mb-4">Твёрдое слово</h3>
+    <div class="divider"></div>
+    <p class="text-monolith-text-secondary text-lg leading-relaxed max-w-lg">
+      Смета, зафиксированная в момент соглашения, — это обещание. Оно не подлежит инфляции, сомнениям или корректировке. Вы платите за результат, а не за процесс. Точка.
+    </p>
+  </div>
+
+  <div class="manifesto-block mb-32 opacity-0 translate-y-10 transition-all duration-1000" data-animate>
+    <h3 class="font-display text-3xl text-white mb-4">Единый организм</h3>
+    <div class="divider"></div>
+    <p class="text-monolith-text-secondary text-lg leading-relaxed max-w-lg">
+      Мы исключили субподрядчиков. Над вашим пространством работает слаженная команда из 5–7 мастеров с общей ответственностью за финальный аккорд. Никаких чужих людей. Только Монолит.
+    </p>
+  </div>
+
+  <div class="manifesto-block mb-32 opacity-0 translate-y-10 transition-all duration-1000" data-animate>
+    <h3 class="font-display text-3xl text-white mb-4">Хронометрия уюта</h3>
+    <div class="divider"></div>
+    <p class="text-monolith-text-secondary text-lg leading-relaxed max-w-lg">
+      Сроки, прописанные в договоре, — это не прогноз, а событие. Мы вернём вам квартиру день в день. Чтобы вы начали жить, а не ждать.
+    </p>
+  </div>
+
+  <div class="manifesto-block mb-32 opacity-0 translate-y-10 transition-all duration-1000" data-animate>
+    <h3 class="font-display text-3xl text-white mb-4">Ритуал перехода</h3>
+    <div class="divider"></div>
+    <p class="text-monolith-text-secondary text-lg leading-relaxed max-w-lg">
+      Профессиональный клининг — не опция, а финал. Вы переступаете порог не в «объект после ремонта», а в свой новый дом, где пахнет свежестью, а не краской.
+    </p>
+  </div>
+
+</section>
+
+<script>
+  const blocks = document.querySelectorAll('[data-animate]');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        entry.target.classList.add('opacity-0', 'translate-y-10');
+        entry.target.classList.remove('opacity-100', 'translate-y-0');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  blocks.forEach(el => observer.observe(el));
+</script>

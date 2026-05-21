@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Монолит — Цельный ремонт</title>
+  </head>
+  <body class="bg-monolith-bg text-monolith-text-primary font-body">
+    <header class="fixed top-0 left-0 right-0 z-20 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center">
+      <a href="/" class="font-display text-xl md:text-2xl tracking-widest text-white no-underline z-30">МОНОЛИТ</a>
+      <button id="burger" class="z-50 flex flex-col gap-1.5 md:hidden">
+        <span class="block w-6 h-px bg-white" id="burger-top"></span>
+        <span class="block w-6 h-px bg-white" id="burger-mid"></span>
+        <span class="block w-6 h-px bg-white" id="burger-bot"></span>
+      </button>
+      <div id="mobile-menu" class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-500 md:hidden" style="background-color: #0A0A0F;">
+        <a href="/" class="text-white text-lg tracking-widest uppercase">Главная</a>
+        <a href="/zero-day" class="text-white text-lg tracking-widest uppercase">Нулевой День</a>
+        <a href="/digital-rehearsal" class="text-white text-lg tracking-widest uppercase">Репетиция</a>
+        <a href="/transparent-perimeter" class="text-white text-lg tracking-widest uppercase">Периметр</a>
+        <a href="/ready-modules" class="text-white text-lg tracking-widest uppercase">Модули</a>
+        <a href="/portfolio" class="text-white text-lg tracking-widest uppercase">Проекты</a>
+        <a href="/contacts" class="text-white text-lg tracking-widest uppercase">Контакты</a>
+      </div>
+      <nav class="hidden md:flex gap-8 text-xs tracking-widest uppercase text-white/70">
+        <a href="/" class="hover:text-white transition-colors duration-300">Главная</a>
+        <a href="/zero-day" class="hover:text-white transition-colors duration-300">Нулевой День</a>
+        <a href="/digital-rehearsal" class="hover:text-white transition-colors duration-300">Репетиция</a>
+        <a href="/transparent-perimeter" class="hover:text-white transition-colors duration-300">Периметр</a>
+        <a href="/ready-modules" class="hover:text-white transition-colors duration-300">Модули</a>
+        <a href="/portfolio" class="hover:text-white transition-colors duration-300">Проекты</a>
+        <a href="/contacts" class="hover:text-white transition-colors duration-300">Контакты</a>
+      </nav>
+    </header>
+    <main class="relative z-10">
+      <slot />
+    </main>
+    <script>
+      const burger = document.getElementById('burger');
+      const menu = document.getElementById('mobile-menu');
+      const topEl = document.getElementById('burger-top');
+      const mid = document.getElementById('burger-mid');
+      const bot = document.getElementById('burger-bot');
+      const links = menu.querySelectorAll('a');
+      let open = false;
+      burger.addEventListener('click', () => {
+        open = !open;
+        if (open) {
+          menu.classList.remove('opacity-0', 'pointer-events-none');
+          menu.classList.add('opacity-100');
+          topEl.style.transform = 'rotate(45deg) translateY(8px)';
+          mid.style.opacity = '0';
+          bot.style.transform = 'rotate(-45deg) translateY(-8px)';
+        } else {
+          menu.classList.add('opacity-0', 'pointer-events-none');
+          menu.classList.remove('opacity-100');
+          topEl.style.transform = '';
+          mid.style.opacity = '';
+          bot.style.transform = '';
+        }
+      });
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.add('opacity-0', 'pointer-events-none');
+          menu.classList.remove('opacity-100');
+          topEl.style.transform = '';
+          mid.style.opacity = '';
+          bot.style.transform = '';
+          open = false;
+        });
+      });
+    </script>
+  </body>
+</html>

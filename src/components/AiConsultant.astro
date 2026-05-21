@@ -1,0 +1,80 @@
+---
+---
+
+<div class="max-w-2xl mx-auto text-center px-6 pb-32">
+  <p class="text-monolith-text-muted text-sm tracking-widest uppercase mb-6">Не знаете, что выбрать?</p>
+  <button id="ai-trigger" class="btn-monolith">
+    Спросить Архитектора
+  </button>
+</div>
+
+<div id="ai-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-500">
+  <div class="bg-monolith-surface border border-monolith-border w-full max-w-lg mx-4 p-8">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="font-display text-xl text-white">Архитектор Монолита</h3>
+      <button id="ai-close" class="text-monolith-text-muted hover:text-white text-2xl leading-none">&times;</button>
+    </div>
+    <div id="ai-chat" class="h-64 overflow-y-auto mb-6 space-y-4 text-sm">
+      <p class="text-monolith-text-secondary">Представь свой идеальный дом. Не мебель и не цвет стен. Что ты чувствуешь, когда входишь в дверь? Опиши одним словом.</p>
+    </div>
+    <div class="flex gap-3">
+      <input id="ai-input" type="text" placeholder="Например: покой, сила, тепло..." class="flex-1 bg-transparent border border-monolith-border px-4 py-3 text-white text-sm focus:outline-none focus:border-monolith-accent-warm transition-colors" />
+      <button id="ai-send" class="btn-monolith px-6">→</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const trigger = document.getElementById('ai-trigger');
+  const modal = document.getElementById('ai-modal');
+  const close = document.getElementById('ai-close');
+  const input = document.getElementById('ai-input');
+  const send = document.getElementById('ai-send');
+  const chat = document.getElementById('ai-chat');
+
+  trigger.addEventListener('click', () => {
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100');
+  });
+
+  close.addEventListener('click', () => {
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modal.classList.remove('opacity-100');
+  });
+
+  const responses = {
+    'тишина': 'Тишина — это визуальный покой. Мягкий свет, тепло дерева, воздух. Это твой вектор: <span class="text-white">Тишина и воздух</span>.',
+    'покой': 'Покой — это когда ничто не отвлекает. Светлые тона, натуральные фактуры. Твой вектор: <span class="text-white">Тишина и воздух</span>.',
+    'сила': 'Сила — это честность материалов. Открытый бетон, сталь. Твой вектор: <span class="text-white">Честная фактура</span>.',
+    'брутальность': 'Брутальность — это эстетика правды. Никаких украшений, только суть. Твой вектор: <span class="text-white">Честная фактура</span>.',
+    'уверенность': 'Уверенность — это баланс пропорций. Классика, неподвластная времени. Твой вектор: <span class="text-white">Эхо классики</span>.',
+    'вечность': 'Вечность — это то, что не устаревает. Элегантные линии, благородные материалы. Твой вектор: <span class="text-white">Эхо классики</span>.',
+    'тепло': 'Тепло — это тактильный комфорт. Натуральное дерево, мягкий свет. Твой вектор: <span class="text-white">Тишина и воздух</span>.',
+  };
+
+  function getResponse(word) {
+    const key = word.toLowerCase().trim();
+    if (responses[key]) return responses[key];
+    return 'Интересный образ. Дай мне ещё одну подсказку — какое чувство ближе: покой, сила или уверенность?';
+  }
+
+  function addMessage(text, isUser = false) {
+    const msg = document.createElement('p');
+    msg.className = isUser ? 'text-monolith-accent-warm text-right' : 'text-monolith-text-secondary';
+    msg.innerHTML = text;
+    chat.appendChild(msg);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  send.addEventListener('click', () => {
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, true);
+    input.value = '';
+    setTimeout(() => addMessage(getResponse(text)), 600);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') send.click();
+  });
+</script>

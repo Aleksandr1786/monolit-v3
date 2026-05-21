@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; background-color: #0A0A0F; color: #D0D0D8; font-family: 'Inter', sans-serif; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0A0A0F; }
+  ::-webkit-scrollbar-thumb { background: #1F1F2E; border-radius: 3px; }
+}
+
+@layer components {
+  .btn-monolith {
+    @apply inline-flex items-center justify-center px-8 py-3.5 border border-monolith-border text-monolith-text-primary text-sm uppercase tracking-widest relative overflow-hidden z-10 transition-all duration-500;
+  }
+  .btn-monolith::before {
+    content: ''; @apply absolute inset-0 bg-monolith-accent-warm scale-x-0 origin-left transition-transform duration-500 -z-10;
+  }
+  .btn-monolith:hover { @apply border-monolith-accent-warm text-monolith-bg; }
+  .btn-monolith:hover::before { @apply scale-x-100; }
+  .heading-xl { @apply font-display font-normal leading-tight; font-size: clamp(2rem, 4vw, 3.5rem); }
+  .heading-lg { @apply font-display font-normal leading-tight; font-size: clamp(1.5rem, 3vw, 2.5rem); }
+  .divider { @apply w-10 h-px bg-monolith-border my-6; }
+}

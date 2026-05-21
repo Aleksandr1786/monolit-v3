@@ -1,0 +1,108 @@
+---
+---
+
+<svg id="hex-grid" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-10;pointer-events:none;" xmlns="http://www.w3.org/2000/svg"></svg>
+
+<script>
+  const svg = document.getElementById('hex-grid');
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  const hexRadius = 36;
+  const hexHeight = hexRadius * Math.sqrt(3);
+  const hexWidth = hexRadius * 2;
+  const horizSpacing = hexWidth * 0.75;
+  const vertSpacing = hexHeight;
+
+  const cols = Math.min(Math.ceil(width / horizSpacing) + 1, 40);
+  const rows = Math.min(Math.ceil(height / vertSpacing) + 1, 30);
+
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
+  gradient.id = 'hex-gradient';
+  gradient.innerHTML = `
+    <stop offset="0%" stop-color="#2A2A3A" stop-opacity="0.6"/>
+    <stop offset="100%" stop-color="#2A2A3A" stop-opacity="0.05"/>
+  `;
+  defs.appendChild(gradient);
+  svg.appendChild(defs);
+
+  const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  group.id = 'hex-group';
+  svg.appendChild(group);
+
+  function createHex(cx, cy, r) {
+    const points = [];
+    for (let i = 0; i < 6; i++) {
+      const angle = (Math.PI / 180) * (60 * i - 30);
+      points.push(`${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`);
+    }
+    return points.join(' ');
+  }
+
+  const hexagons = [];
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const cx = col * horizSpacing + (row % 2 === 0 ? 0 : horizSpacing / 2);
+      const cy = row * vertSpacing * 0.75;
+      const hex = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+      hex.setAttribute('points', createHex(cx, cy, hexRadius * 0.85));
+      hex.setAttribute('fill', 'none');
+      hex.setAttribute('stroke', '#2A2A3A');
+      hex.setAttribute('stroke-width', '0.5');
+      hex.setAttribute('opacity', '0.4');
+      hex.setAttribute('data-cx', cx);
+      hex.setAttribute('data-cy', cy);
+      group.appendChild(hex);
+      hexagons.push(hex);
+    }
+  }
+
+  let time = 0;
+  function animate() {
+    time += 0.003;
+    hexagons.forEach((hex) => {
+      const cx = parseFloat(hex.getAttribute('data-cx'));
+      const cy = parseFloat(hex.getAttribute('data-cy'));
+      const dist = Math.sqrt((cx - width/2) ** 2 + (cy - height/2) ** 2);
+      const wave = Math.sin(dist * 0.015 + time) * 0.15 + 0.4;
+      hex.setAttribute('opacity', wave);
+    });
+    requestAnimationFrame(animate);
+  }
+
+  let mouseX = width / 2;
+  let mouseY = height / 2;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function cursorEffect() {
+    hexagons.forEach((hex) => {
+      const cx = parseFloat(hex.getAttribute('data-cx'));
+      const cy = parseFloat(hex.getAttribute('data-cy'));
+      const dx = cx - mouseX;
+      const dy = cy - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const maxDist = 120;
+      if (dist < maxDist) {
+        const influence = 1 - dist / maxDist;
+        hex.setAttribute('stroke', `rgba(200, 168, 130, ${influence * 0.8})`);
+        hex.setAttribute('stroke-width', `${0.5 + influence * 1.5}`);
+        hex.setAttribute('opacity', `${0.4 + influence * 0.6}`);
+      } else {
+        hex.setAttribute('stroke', '#2A2A3A');
+        hex.setAttribute('stroke-width', '0.5');
+      }
+    });
+    requestAnimationFrame(cursorEffect);
+  }
+
+  animate();
+  cursorEffect();
+
+  window.addEventListener('resize', () => location.reload());
+</script>
