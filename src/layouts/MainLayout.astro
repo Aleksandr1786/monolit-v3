@@ -12,12 +12,12 @@ import '../styles/global.css';
   <body class="bg-monolith-bg text-monolith-text-primary font-body">
     <header class="fixed top-0 left-0 right-0 z-30 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center">
       <a href="/" class="font-display text-xl md:text-2xl tracking-widest text-white no-underline z-30">МОНОЛИТ</a>
-      <button id="burger" class="z-50 flex-col gap-1.5 hidden max-md:flex" style="display:none;">
-        <span class="block w-6 h-px bg-white" id="burger-top"></span>
-        <span class="block w-6 h-px bg-white" id="burger-mid"></span>
-        <span class="block w-6 h-px bg-white" id="burger-bot"></span>
+      <button id="burger" style="display:none;z-index:50;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;">
+        <span id="burger-top" style="display:block;width:24px;height:1px;background:#fff;"></span>
+        <span id="burger-mid" style="display:block;width:24px;height:1px;background:#fff;"></span>
+        <span id="burger-bot" style="display:block;width:24px;height:1px;background:#fff;"></span>
       </button>
-      <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-500 md:hidden" style="background-color: #0A0A0F;">
+      <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-500" style="background-color: #0A0A0F;">
         <a href="/" class="text-white text-lg tracking-widest uppercase">Главная</a>
         <a href="/zero-day" class="text-white text-lg tracking-widest uppercase">Нулевой День</a>
         <a href="/digital-rehearsal" class="text-white text-lg tracking-widest uppercase">Репетиция</a>
@@ -41,36 +41,47 @@ import '../styles/global.css';
     </main>
     <script>
       const burger = document.getElementById('burger');
-      if (window.innerWidth < 768) burger.style.display = 'flex';
-window.addEventListener('resize', () => {
-  burger.style.display = window.innerWidth < 768 ? 'flex' : 'none';
-});
       const menu = document.getElementById('mobile-menu');
       const topEl = document.getElementById('burger-top');
       const mid = document.getElementById('burger-mid');
       const bot = document.getElementById('burger-bot');
       const links = menu.querySelectorAll('a');
       let open = false;
+
+      function updateBurger() {
+        if (window.innerWidth < 768) {
+          burger.style.display = 'flex';
+        } else {
+          burger.style.display = 'none';
+          menu.style.opacity = '0';
+          menu.style.pointerEvents = 'none';
+          open = false;
+        }
+      }
+      updateBurger();
+      window.addEventListener('resize', updateBurger);
+
       burger.addEventListener('click', () => {
         open = !open;
         if (open) {
-          menu.classList.remove('opacity-0', 'pointer-events-none');
-          menu.classList.add('opacity-100');
-          topEl.style.transform = 'rotate(45deg) translateY(8px)';
+          menu.style.opacity = '1';
+          menu.style.pointerEvents = 'auto';
+          topEl.style.transform = 'rotate(45deg) translateY(6px)';
           mid.style.opacity = '0';
-          bot.style.transform = 'rotate(-45deg) translateY(-8px)';
+          bot.style.transform = 'rotate(-45deg) translateY(-6px)';
         } else {
-          menu.classList.add('opacity-0', 'pointer-events-none');
-          menu.classList.remove('opacity-100');
+          menu.style.opacity = '0';
+          menu.style.pointerEvents = 'none';
           topEl.style.transform = '';
           mid.style.opacity = '';
           bot.style.transform = '';
         }
       });
+
       links.forEach(link => {
         link.addEventListener('click', () => {
-          menu.classList.add('opacity-0', 'pointer-events-none');
-          menu.classList.remove('opacity-100');
+          menu.style.opacity = '0';
+          menu.style.pointerEvents = 'none';
           topEl.style.transform = '';
           mid.style.opacity = '';
           bot.style.transform = '';
