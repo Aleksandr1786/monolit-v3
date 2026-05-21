@@ -31,6 +31,9 @@ import Calculator from '../components/Calculator.astro';
   <Portfolio />
   <Calculator />
   <style>
+  @media (max-width: 767px) {
+    * { transition: none !important; animation: none !important; }
+  }
   header { pointer-events: none !important; }
   header a { pointer-events: auto !important; }
   #burger { pointer-events: auto !important; display: none !important; }
