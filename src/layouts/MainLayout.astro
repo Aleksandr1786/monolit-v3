@@ -10,9 +10,9 @@ import '../styles/global.css';
     <title>Монолит — Цельный ремонт</title>
   </head>
   <body class="bg-monolith-bg text-monolith-text-primary font-body">
-    <header class="fixed top-0 left-0 right-0 z-30 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center">
-      <a href="/" class="font-display text-xl md:text-2xl tracking-widest text-white no-underline z-30">МОНОЛИТ</a>
-      <button id="burger" style="display:none;z-index:50;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;">
+    <header class="fixed top-0 left-0 right-0 z-30 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center pointer-events-none">
+      <a href="/" class="font-display text-xl md:text-2xl tracking-widest text-white no-underline z-30 pointer-events-auto">МОНОЛИТ</a>
+      <button id="burger" style="display:none;z-index:50;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;pointer-events:auto;">
         <span id="burger-top" style="display:block;width:24px;height:1px;background:#fff;"></span>
         <span id="burger-mid" style="display:block;width:24px;height:1px;background:#fff;"></span>
         <span id="burger-bot" style="display:block;width:24px;height:1px;background:#fff;"></span>
@@ -26,7 +26,7 @@ import '../styles/global.css';
         <a href="/portfolio" class="text-white text-lg tracking-widest uppercase">Проекты</a>
         <a href="/contacts" class="text-white text-lg tracking-widest uppercase">Контакты</a>
       </div>
-      <nav class="hidden md:flex gap-8 text-xs tracking-widest uppercase text-white/70">
+      <nav class="hidden md:flex gap-8 text-xs tracking-widest uppercase text-white/70 pointer-events-auto">
         <a href="/" class="hover:text-white transition-colors duration-300">Главная</a>
         <a href="/zero-day" class="hover:text-white transition-colors duration-300">Нулевой День</a>
         <a href="/digital-rehearsal" class="hover:text-white transition-colors duration-300">Репетиция</a>
