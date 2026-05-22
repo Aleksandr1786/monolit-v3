@@ -26,6 +26,21 @@ import Calculator from '../components/Calculator.astro';
   <AiConsultant />
   <Portfolio />
   <Calculator />
+  <script>
+  const blocks = document.querySelectorAll('.manifesto-block, .vector-card, .portfolio-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+      }
+    });
+  }, { threshold: 0.15 });
+  blocks.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.6s ease';
+    observer.observe(el);
+  });
+</script>
 </MainLayout>
 
 <style>
