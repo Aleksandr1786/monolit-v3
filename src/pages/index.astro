@@ -1,16 +1,48 @@
-﻿---
+---
 import MainLayout from '../layouts/MainLayout.astro';
+import HexBackground from '../components/HexBackground.astro';
+import Manifesto from '../components/Manifesto.astro';
+import Vectors from '../components/Vectors.astro';
+import AiConsultant from '../components/AiConsultant.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Calculator from '../components/Calculator.astro';
 ---
 
 <MainLayout>
-  <section style="min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 1.5rem;">
-    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);color:#D0D0D8;margin-bottom:1.5rem;line-height:1.1;">
-      Пространство, с которого начинается новая глава
-    </h1>
-    <div style="width:40px;height:1px;background:#4A4A5E;margin:1.5rem auto;"></div>
-    <p style="color:#8888A0;font-size:1.1rem;max-width:500px;margin-bottom:2.5rem;">
-      Монолит. Архитектура жизни. Цельный ремонт.
-    </p>
-    <a href="/zero-day" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;border:1px solid #4A4A5E;color:#E8E8F0;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Начать погружение</a>
+  <HexBackground />
+  <section style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 1.5rem;position:relative;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,15,0.8),rgba(10,10,15,0.6),rgba(10,10,15,0.9));z-index:0;"></div>
+    <div style="position:relative;z-index:10;">
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);color:#D0D0D8;margin-bottom:1.5rem;line-height:1.1;">
+        Пространство, с которого<br />начинается новая глава
+      </h1>
+      <div style="width:40px;height:1px;background:#4A4A5E;margin:1.5rem auto;"></div>
+      <p style="color:#8888A0;font-size:1.1rem;max-width:500px;margin:0 auto 2.5rem;">
+        ЦЕЛОЕ. Архитектура жизни. Цельный ремонт.
+      </p>
+      <a href="/zero-day" class="btn">Начать погружение</a>
+    </div>
   </section>
+  <Manifesto />
+  <Vectors />
+  <AiConsultant />
+  <Portfolio />
+  <Calculator />
 </MainLayout>
+
+<style>
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 32px; border: 1px solid #4A4A5E; color: #E8E8F0;
+    font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.4s; position: relative;
+    overflow: hidden; z-index: 1;
+  }
+  .btn::before {
+    content: ''; position: absolute; inset: 0; background: #C8A882;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+    z-index: -1;
+  }
+  .btn:hover { border-color: #C8A882; color: #0A0A0F; }
+  .btn:hover::before { transform: scaleX(1); }
+</style>

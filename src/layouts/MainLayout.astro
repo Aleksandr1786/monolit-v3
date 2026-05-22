@@ -6,18 +6,27 @@ import '../styles/global.css';
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Монолит — Цельный ремонт</title>
   </head>
-  <body class="bg-monolith-bg text-monolith-text-primary font-body">
-    <header class="fixed top-0 left-0 right-0 z-30 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center pointer-events-none">
-      <a href="/" class="font-display text-xl md:text-2xl tracking-widest text-white no-underline z-30 pointer-events-auto">МОНОЛИТ</a>
-      <button id="burger" style="display:none;z-index:50;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;pointer-events:auto;">
+  <body>
+    <header style="position:fixed;top:0;left:0;right:0;z-index:20;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;">
+      <a href="/" style="font-family:'Playfair Display',serif;font-size:1.5rem;letter-spacing:0.1em;color:#fff;text-decoration:none;z-index:30;">МОНОЛИТ</a>
+      <button id="burger" style="z-index:50;display:flex;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;">
         <span id="burger-top" style="display:block;width:24px;height:1px;background:#fff;"></span>
         <span id="burger-mid" style="display:block;width:24px;height:1px;background:#fff;"></span>
         <span id="burger-bot" style="display:block;width:24px;height:1px;background:#fff;"></span>
       </button>
-      <div id="mobile-menu" style="position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity 0.3s;background:#0A0A0F;height:100dvh;">
+      <nav id="desktop-nav" style="display:none;gap:2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">
+        <a href="/" style="color:rgba(255,255,255,0.7);text-decoration:none;">Главная</a>
+        <a href="/zero-day" style="color:rgba(255,255,255,0.7);text-decoration:none;">Нулевой День</a>
+        <a href="/digital-rehearsal" style="color:rgba(255,255,255,0.7);text-decoration:none;">Репетиция</a>
+        <a href="/transparent-perimeter" style="color:rgba(255,255,255,0.7);text-decoration:none;">Периметр</a>
+        <a href="/ready-modules" style="color:rgba(255,255,255,0.7);text-decoration:none;">Модули</a>
+        <a href="/portfolio" style="color:rgba(255,255,255,0.7);text-decoration:none;">Проекты</a>
+        <a href="/contacts" style="color:rgba(255,255,255,0.7);text-decoration:none;">Контакты</a>
+      </nav>
+      <div id="mobile-menu" style="position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity 0.5s;background:#0A0A0F;">
         <a href="/" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Главная</a>
         <a href="/zero-day" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Нулевой День</a>
         <a href="/digital-rehearsal" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Репетиция</a>
@@ -26,21 +35,64 @@ import '../styles/global.css';
         <a href="/portfolio" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Проекты</a>
         <a href="/contacts" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Контакты</a>
       </div>
-      <nav class="hidden md:flex gap-8 text-xs tracking-widest uppercase text-white/70 pointer-events-auto">
-        <a href="/" class="hover:text-white transition-colors duration-300">Главная</a>
-        <a href="/zero-day" class="hover:text-white transition-colors duration-300">Нулевой День</a>
-        <a href="/digital-rehearsal" class="hover:text-white transition-colors duration-300">Репетиция</a>
-        <a href="/transparent-perimeter" class="hover:text-white transition-colors duration-300">Периметр</a>
-        <a href="/ready-modules" class="hover:text-white transition-colors duration-300">Модули</a>
-        <a href="/portfolio" class="hover:text-white transition-colors duration-300">Проекты</a>
-        <a href="/contacts" class="hover:text-white transition-colors duration-300">Контакты</a>
-      </nav>
     </header>
-    <main class="relative z-10">
+    <main style="position:relative;z-index:10;">
       <slot />
     </main>
     <script>
-  // Скрипт отключён для диагностики
-</script>
+      const burger = document.getElementById('burger');
+      const menu = document.getElementById('mobile-menu');
+      const desktopNav = document.getElementById('desktop-nav');
+      const topEl = document.getElementById('burger-top');
+      const mid = document.getElementById('burger-mid');
+      const bot = document.getElementById('burger-bot');
+      const links = menu.querySelectorAll('a');
+      let open = false;
+
+      function showDesktop() {
+        desktopNav.style.display = 'flex';
+        burger.style.display = 'none';
+      }
+      function showMobile() {
+        desktopNav.style.display = 'none';
+        burger.style.display = 'flex';
+      }
+
+      if (window.innerWidth >= 768) showDesktop();
+      else showMobile();
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) showDesktop();
+        else showMobile();
+      });
+
+      burger.addEventListener('click', () => {
+        open = !open;
+        if (open) {
+          menu.style.opacity = '1';
+          menu.style.pointerEvents = 'auto';
+          topEl.style.transform = 'rotate(45deg) translateY(6px)';
+          mid.style.opacity = '0';
+          bot.style.transform = 'rotate(-45deg) translateY(-6px)';
+        } else {
+          menu.style.opacity = '0';
+          menu.style.pointerEvents = 'none';
+          topEl.style.transform = '';
+          mid.style.opacity = '';
+          bot.style.transform = '';
+        }
+      });
+
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          menu.style.opacity = '0';
+          menu.style.pointerEvents = 'none';
+          topEl.style.transform = '';
+          mid.style.opacity = '';
+          bot.style.transform = '';
+          open = false;
+        });
+      });
+    </script>
   </body>
 </html>

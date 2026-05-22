@@ -1,0 +1,27 @@
+---
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Auth</title>
+</head>
+<body>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    const hash = window.location.hash.substring(1);
+    const params = new URLSearchParams(hash);
+    const access_token = params.get('access_token');
+    if (access_token) {
+      localStorage.setItem('netlify-cms-user', JSON.stringify({
+        token: access_token,
+        backend: { name: 'github', repo: 'Aleksandr1786/monolit', branch: 'main' }
+      }));
+      window.location.href = '/admin/';
+    } else {
+      document.write('Authorization failed. <a href="/admin/">Try again</a>');
+    }
+  </script>
+</body>
+</html>
