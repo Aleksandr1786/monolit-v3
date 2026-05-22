@@ -6,7 +6,7 @@ import '../styles/global.css';
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Монолит — Цельный ремонт</title>
   </head>
   <body class="bg-monolith-bg text-monolith-text-primary font-body">
@@ -17,14 +17,14 @@ import '../styles/global.css';
         <span id="burger-mid" style="display:block;width:24px;height:1px;background:#fff;"></span>
         <span id="burger-bot" style="display:block;width:24px;height:1px;background:#fff;"></span>
       </button>
-      <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-500" style="background-color: #0A0A0F;">
-        <a href="/" class="text-white text-lg tracking-widest uppercase">Главная</a>
-        <a href="/zero-day" class="text-white text-lg tracking-widest uppercase">Нулевой День</a>
-        <a href="/digital-rehearsal" class="text-white text-lg tracking-widest uppercase">Репетиция</a>
-        <a href="/transparent-perimeter" class="text-white text-lg tracking-widest uppercase">Периметр</a>
-        <a href="/ready-modules" class="text-white text-lg tracking-widest uppercase">Модули</a>
-        <a href="/portfolio" class="text-white text-lg tracking-widest uppercase">Проекты</a>
-        <a href="/contacts" class="text-white text-lg tracking-widest uppercase">Контакты</a>
+      <div id="mobile-menu" style="position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity 0.3s;background:#0A0A0F;height:100dvh;">
+        <a href="/" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Главная</a>
+        <a href="/zero-day" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Нулевой День</a>
+        <a href="/digital-rehearsal" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Репетиция</a>
+        <a href="/transparent-perimeter" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Периметр</a>
+        <a href="/ready-modules" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Модули</a>
+        <a href="/portfolio" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Проекты</a>
+        <a href="/contacts" style="color:#fff;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Контакты</a>
       </div>
       <nav class="hidden md:flex gap-8 text-xs tracking-widest uppercase text-white/70 pointer-events-auto">
         <a href="/" class="hover:text-white transition-colors duration-300">Главная</a>
@@ -47,6 +47,11 @@ import '../styles/global.css';
       const bot = document.getElementById('burger-bot');
       const links = menu.querySelectorAll('a');
       let open = false;
+      let touchStartY = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
 
       function updateBurger() {
         if (window.innerWidth < 768) {
@@ -61,17 +66,17 @@ import '../styles/global.css';
       updateBurger();
       window.addEventListener('resize', updateBurger);
 
-      burger.addEventListener('click', () => {
+      burger.addEventListener('click', (e) => {
+        const touchEndY = e.changedTouches ? e.changedTouches[0].clientY : touchStartY;
+        if (Math.abs(touchEndY - touchStartY) > 10) return;
         open = !open;
+        menu.style.opacity = open ? '1' : '0';
+        menu.style.pointerEvents = open ? 'auto' : 'none';
         if (open) {
-          menu.style.opacity = '1';
-          menu.style.pointerEvents = 'auto';
           topEl.style.transform = 'rotate(45deg) translateY(6px)';
           mid.style.opacity = '0';
           bot.style.transform = 'rotate(-45deg) translateY(-6px)';
         } else {
-          menu.style.opacity = '0';
-          menu.style.pointerEvents = 'none';
           topEl.style.transform = '';
           mid.style.opacity = '';
           bot.style.transform = '';
@@ -80,12 +85,12 @@ import '../styles/global.css';
 
       links.forEach(link => {
         link.addEventListener('click', () => {
+          open = false;
           menu.style.opacity = '0';
           menu.style.pointerEvents = 'none';
           topEl.style.transform = '';
           mid.style.opacity = '';
           bot.style.transform = '';
-          open = false;
         });
       });
     </script>

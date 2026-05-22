@@ -25,6 +25,15 @@
   .heading-lg { @apply font-display font-normal leading-tight; font-size: clamp(1.5rem, 3vw, 2.5rem); }
   .divider { @apply w-10 h-px bg-monolith-border my-6; }
 }
+html, body {
+  overscroll-behavior: none;
+}
+body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+}
 #burger { display: none !important; }
 @media (max-width: 767px) {
   #burger { display: flex !important; }
