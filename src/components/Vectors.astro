@@ -6,30 +6,56 @@
     <h2 class="heading-lg text-center mb-4">Три вектора вашего пространства</h2>
     <p class="text-monolith-text-muted text-center mb-16 text-sm tracking-widest uppercase">Выберите свой путь</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
       <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96">
         <div class="absolute inset-0 bg-gradient-to-t from-monolith-bg to-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
           <h3 class="font-display text-2xl text-white mb-2">Эхо классики</h3>
           <p class="text-monolith-text-secondary text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">Элегантность вне времени. Баланс пропорций и света.</p>
         </div>
-        <div class="absolute inset-0 flex items-center justify-center text-monolith-text-muted text-6xl font-display opacity-20">I</div>
+        <div class="absolute inset-0 flex items-center justify-center z-0">
+          <span class="roman-numeral font-display text-8xl text-monolith-text-muted opacity-20 transition-all duration-1000" style="text-shadow: 0 0 0px #C8A882;">I</span>
+        </div>
       </div>
+
       <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96">
         <div class="absolute inset-0 bg-gradient-to-t from-monolith-bg to-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
           <h3 class="font-display text-2xl text-white mb-2">Честная фактура</h3>
           <p class="text-monolith-text-secondary text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">Брутальная эстетика. Открытые текстуры и сталь.</p>
         </div>
-        <div class="absolute inset-0 flex items-center justify-center text-monolith-text-muted text-6xl font-display opacity-20">II</div>
+        <div class="absolute inset-0 flex items-center justify-center z-0">
+          <span class="roman-numeral font-display text-8xl text-monolith-text-muted opacity-20 transition-all duration-1000" style="text-shadow: 0 0 0px #C8A882;">II</span>
+        </div>
       </div>
+
       <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96">
         <div class="absolute inset-0 bg-gradient-to-t from-monolith-bg to-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
           <h3 class="font-display text-2xl text-white mb-2">Тишина и воздух</h3>
           <p class="text-monolith-text-secondary text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">Максимум света. Натуральные материалы и покой.</p>
         </div>
-        <div class="absolute inset-0 flex items-center justify-center text-monolith-text-muted text-6xl font-display opacity-20">III</div>
+        <div class="absolute inset-0 flex items-center justify-center z-0">
+          <span class="roman-numeral font-display text-8xl text-monolith-text-muted opacity-20 transition-all duration-1000" style="text-shadow: 0 0 0px #C8A882;">III</span>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
+
+<script>
+  const numerals = document.querySelectorAll('.roman-numeral');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '0.6';
+        entry.target.style.textShadow = '0 0 30px #C8A882, 0 0 60px #C8A882';
+      } else {
+        entry.target.style.opacity = '0.2';
+        entry.target.style.textShadow = '0 0 0px #C8A882';
+      }
+    });
+  }, { threshold: 0.5 });
+  numerals.forEach(el => observer.observe(el));
+</script>
