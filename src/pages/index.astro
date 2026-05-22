@@ -37,15 +37,15 @@ import Calculator from '../components/Calculator.astro';
         scrollTimeout = setTimeout(() => {
           entry.target.style.setProperty('opacity', '1', 'important');
           entry.target.style.setProperty('transform', 'translateY(0)', 'important');
-        }, 1000);
+        }, 1500);
       }
     });
   }, { threshold: 0.2 });
   
   blocks.forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 1s ease, transform 1s ease';
+    el.style.transform = 'translateY(60px)';
+    el.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
     observer.observe(el);
   });
 </script>
