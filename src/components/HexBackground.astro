@@ -1,2 +1,57 @@
 ---
 ---
+
+<svg id="hex-grid" class="fixed inset-0 w-full h-full pointer-events-none" style="z-index:-10;" xmlns="http://www.w3.org/2000/svg"></svg>
+
+<script>
+  const svg = document.getElementById('hex-grid');
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const hexRadius = 36;
+  const hexHeight = hexRadius * Math.sqrt(3);
+  const hexWidth = hexRadius * 2;
+  const horizSpacing = hexWidth * 0.75;
+  const vertSpacing = hexHeight;
+  const cols = Math.min(Math.ceil(width / horizSpacing) + 1, 40);
+  const rows = Math.min(Math.ceil(height / vertSpacing) + 1, 30);
+  const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  svg.appendChild(group);
+
+  function createHex(cx, cy, r) {
+    const pts = [];
+    for (let i = 0; i < 6; i++) {
+      const a = (Math.PI / 180) * (60 * i - 30);
+      pts.push(`${cx + r * Math.cos(a)},${cy + r * Math.sin(a)}`);
+    }
+    return pts.join(' ');
+  }
+
+  const hexagons = [];
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const cx = col * horizSpacing + (row % 2 === 0 ? 0 : horizSpacing / 2);
+      const cy = row * vertSpacing * 0.75;
+      const hex = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+      hex.setAttribute('points', createHex(cx, cy, hexRadius * 0.85));
+      hex.setAttribute('fill', 'none');
+      hex.setAttribute('stroke', '#2A2A3A');
+      hex.setAttribute('stroke-width', '0.5');
+      hex.setAttribute('opacity', '0.7');
+      group.appendChild(hex);
+      hexagons.push({ hex, cx, cy });
+    }
+  }
+
+  let time = 0;
+  function animate() {
+    time += 0.003;
+    hexagons.forEach(h => {
+      const dist = Math.sqrt((h.cx - width/2) ** 2 + (h.cy - height/2) ** 2);
+      h.hex.setAttribute('opacity', Math.sin(dist * 0.015 + time) * 0.25 + 0.6);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  window.addEventListener('resize', () => location.reload());
+</script>
