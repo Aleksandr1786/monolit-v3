@@ -40,59 +40,7 @@ import '../styles/global.css';
       <slot />
     </main>
     <script>
-      const burger = document.getElementById('burger');
-      const menu = document.getElementById('mobile-menu');
-      const topEl = document.getElementById('burger-top');
-      const mid = document.getElementById('burger-mid');
-      const bot = document.getElementById('burger-bot');
-      const links = menu.querySelectorAll('a');
-      let open = false;
-      let touchStartY = 0;
-
-      document.addEventListener('touchstart', (e) => {
-        touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-
-      function updateBurger() {
-        if (window.innerWidth < 768) {
-          burger.style.display = 'flex';
-        } else {
-          burger.style.display = 'none';
-          menu.style.opacity = '0';
-          menu.style.pointerEvents = 'none';
-          open = false;
-        }
-      }
-      updateBurger();
-      window.addEventListener('resize', updateBurger);
-
-      burger.addEventListener('click', (e) => {
-        const touchEndY = e.changedTouches ? e.changedTouches[0].clientY : touchStartY;
-        if (Math.abs(touchEndY - touchStartY) > 10) return;
-        open = !open;
-        menu.style.opacity = open ? '1' : '0';
-        menu.style.pointerEvents = open ? 'auto' : 'none';
-        if (open) {
-          topEl.style.transform = 'rotate(45deg) translateY(6px)';
-          mid.style.opacity = '0';
-          bot.style.transform = 'rotate(-45deg) translateY(-6px)';
-        } else {
-          topEl.style.transform = '';
-          mid.style.opacity = '';
-          bot.style.transform = '';
-        }
-      });
-
-      links.forEach(link => {
-        link.addEventListener('click', () => {
-          open = false;
-          menu.style.opacity = '0';
-          menu.style.pointerEvents = 'none';
-          topEl.style.transform = '';
-          mid.style.opacity = '';
-          bot.style.transform = '';
-        });
-      });
-    </script>
+  // Скрипт отключён для диагностики
+</script>
   </body>
 </html>
