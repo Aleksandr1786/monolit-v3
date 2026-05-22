@@ -37,7 +37,7 @@ import Calculator from '../components/Calculator.astro';
         scrollTimeout = setTimeout(() => {
           entry.target.style.setProperty('opacity', '1', 'important');
           entry.target.style.setProperty('transform', 'translateY(0)', 'important');
-        }, 200);
+        }, 500);
       }
     });
   }, { threshold: 0.2 });
@@ -56,12 +56,12 @@ import Calculator from '../components/Calculator.astro';
     display: inline-flex; align-items: center; justify-content: center;
     padding: 14px 32px; border: 1px solid #4A4A5E; color: #E8E8F0;
     font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: none; transition: all 0.4s; position: relative;
+    text-decoration: none; transition: all 0.8s; position: relative;
     overflow: hidden; z-index: 1;
   }
   .btn::before {
     content: ''; position: absolute; inset: 0; background: #C8A882;
-    transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.8s;
     z-index: -1;
   }
   .btn:hover { border-color: #C8A882; color: #0A0A0F; }
