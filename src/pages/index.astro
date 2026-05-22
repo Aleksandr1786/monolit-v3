@@ -1,40 +1,16 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Portfolio from '../components/Portfolio.astro';
-import Manifesto from '../components/Manifesto.astro';
-import Vectors from '../components/Vectors.astro';
-import HexBackground from '../components/HexBackground.astro';
-import AiConsultant from '../components/AiConsultant.astro';
-import Calculator from '../components/Calculator.astro';
 ---
 
 <MainLayout>
-  <section class="h-screen flex flex-col items-center justify-center text-center px-4 md:px-6 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-monolith-bg/80 via-monolith-bg/60 to-monolith-bg/90 pointer-events-none z-0"></div>
-    <div class="relative z-10">
-      <h1 class="heading-xl mb-6 text-3xl md:text-5xl lg:text-6xl">
-        Пространство, с которого<br class="hidden md:block" /> начинается новая глава
-      </h1>
-      <div class="divider mx-auto"></div>
-      <p class="text-monolith-text-secondary text-base md:text-lg max-w-xl mb-10 px-2">
-        Монолит. Архитектура жизни. Цельный ремонт.
-      </p>
-      <a href="/zero-day" class="btn-monolith text-sm md:text-base no-underline">
-        Начать погружение
-      </a>
-    </div>
+  <section style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 1.5rem;">
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);color:#D0D0D8;margin-bottom:1.5rem;line-height:1.1;">
+      Пространство, с которого начинается новая глава
+    </h1>
+    <div style="width:40px;height:1px;background:#4A4A5E;margin:1.5rem auto;"></div>
+    <p style="color:#8888A0;font-size:1.1rem;max-width:500px;margin-bottom:2.5rem;">
+      Монолит. Архитектура жизни. Цельный ремонт.
+    </p>
+    <a href="/zero-day" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;border:1px solid #4A4A5E;color:#E8E8F0;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Начать погружение</a>
   </section>
-  <Manifesto />
-  <Portfolio />
-  <AiConsultant />
-  <Vectors />
-  <HexBackground />
-  <Calculator />
- <style>
-  @media (max-width: 767px) {
-    * { transition: none !important; animation: none !important; }
-  }
-  #burger { display: none !important; }
-  #mobile-menu { display: none !important; }
-</style>
 </MainLayout>
