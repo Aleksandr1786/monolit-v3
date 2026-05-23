@@ -7,36 +7,36 @@
     <p class="text-monolith-text-muted text-center mb-16 text-sm tracking-widest uppercase">Выберите свой путь</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96 fade-up" style="animation-delay: 0.2s;">
+      <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96 vector-animate" data-delay="0">
         <div class="absolute inset-0 bg-gradient-to-t from-monolith-bg to-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
           <h3 class="font-display text-2xl text-white mb-2">Эхо классики</h3>
           <p class="text-monolith-text-secondary text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">Элегантность вне времени. Баланс пропорций и света.</p>
         </div>
         <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="font-display text-8xl opacity-30 glow-gold">I</span>
+          <span class="font-display text-8xl roman-numeral" style="color:#4A4A5E;opacity:0.3;">I</span>
         </div>
       </div>
 
-      <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96 fade-up" style="animation-delay: 0.5s;">
+      <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96 vector-animate" data-delay="200">
         <div class="absolute inset-0 bg-gradient-to-t from-monolith-bg to-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
           <h3 class="font-display text-2xl text-white mb-2">Честная фактура</h3>
           <p class="text-monolith-text-secondary text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">Брутальная эстетика. Открытые текстуры и сталь.</p>
         </div>
         <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="font-display text-8xl opacity-30 glow-gold">II</span>
+          <span class="font-display text-8xl roman-numeral" style="color:#4A4A5E;opacity:0.3;">II</span>
         </div>
       </div>
 
-      <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96 fade-up" style="animation-delay: 0.8s;">
+      <div class="vector-card group relative overflow-hidden bg-monolith-surface cursor-pointer h-96 vector-animate" data-delay="400">
         <div class="absolute inset-0 bg-gradient-to-t from-monolith-bg to-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
           <h3 class="font-display text-2xl text-white mb-2">Тишина и воздух</h3>
           <p class="text-monolith-text-secondary text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">Максимум света. Натуральные материалы и покой.</p>
         </div>
         <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="font-display text-8xl opacity-30 glow-gold">III</span>
+          <span class="font-display text-8xl roman-numeral" style="color:#4A4A5E;opacity:0.3;">III</span>
         </div>
       </div>
 
@@ -44,22 +44,31 @@
   </div>
 </section>
 
-<style>
-  .fade-up {
-    opacity: 0;
-    animation: fadeUp 1s ease forwards;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .glow-gold {
-    color: #4A4A5E;
-    text-shadow: 0 0 0px #C8A882;
-    animation: glowPulse 2s ease-in-out 1s forwards;
-  }
-  @keyframes glowPulse {
-    from { color: #4A4A5E; text-shadow: 0 0 0px #C8A882; }
-    to { color: #C8A882; text-shadow: 0 0 30px #C8A882, 0 0 60px #C8A882; }
-  }
-</style>
+<script>
+  const cards = document.querySelectorAll('.vector-animate');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay) || 0;
+        setTimeout(() => {
+          entry.target.style.setProperty('opacity', '1', 'important');
+          entry.target.style.setProperty('transform', 'translateY(0)', 'important');
+          const numeral = entry.target.querySelector('.roman-numeral');
+          if (numeral) {
+            numeral.style.setProperty('color', '#C8A882', 'important');
+            numeral.style.setProperty('opacity', '0.8', 'important');
+            numeral.style.setProperty('text-shadow', '0 0 30px #C8A882, 0 0 60px #C8A882', 'important');
+            numeral.style.transition = 'all 1s ease';
+          }
+        }, delay);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(40px)';
+    card.style.transition = 'all 0.8s ease';
+    observer.observe(card);
+  });
+</script>
