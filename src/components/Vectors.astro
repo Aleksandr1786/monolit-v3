@@ -56,9 +56,16 @@
           const numeral = entry.target.querySelector('.roman-numeral');
           if (numeral) {
             numeral.style.setProperty('color', '#C8A882', 'important');
-            numeral.style.setProperty('opacity', '0.8', 'important');
-            numeral.style.setProperty('text-shadow', '0 0 30px #C8A882, 0 0 60px #C8A882', 'important');
-            numeral.style.transition = 'all 1s ease';
+            numeral.style.setProperty('opacity', '1', 'important');
+            numeral.style.setProperty('text-shadow', '0 0 40px #C8A882, 0 0 80px #C8A882, 0 0 120px #C8A882', 'important');
+            numeral.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+            setTimeout(() => {
+              numeral.animate([
+                { textShadow: '0 0 40px #C8A882, 0 0 80px #C8A882, 0 0 120px #C8A882' },
+                { textShadow: '0 0 20px #C8A882, 0 0 40px #C8A882, 0 0 60px #C8A882' },
+                { textShadow: '0 0 40px #C8A882, 0 0 80px #C8A882, 0 0 120px #C8A882' }
+              ], { duration: 2000, iterations: Infinity, easing: 'ease-in-out' });
+            }, 1200);
           }
         }, delay);
       }
@@ -67,8 +74,8 @@
 
   cards.forEach(card => {
     card.style.opacity = '0';
-    card.style.transform = 'translateY(40px)';
-    card.style.transition = 'all 0.8s ease';
+    card.style.transform = 'translateY(60px)';
+    card.style.transition = 'all 1s cubic-bezier(0.16, 1, 0.3, 1)';
     observer.observe(card);
   });
 </script>
