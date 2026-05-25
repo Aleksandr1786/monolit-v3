@@ -1,15 +1,154 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 ---
-
+ 
 <MainLayout>
-  <section class="min-h-screen pt-32 px-6 max-w-2xl mx-auto">
-    <h1 class="heading-lg mb-8">Политика конфиденциальности</h1>
-    <div class="text-monolith-text-secondary text-sm space-y-4">
-      <p>Мы уважаем вашу конфиденциальность. Данные, которые вы оставляете через форму обратной связи (имя, телефон, email), используются исключительно для связи с вами по вашему запросу.</p>
-      <p>Данные не передаются третьим лицам и хранятся в защищённом виде не дольше 12 месяцев.</p>
-      <p>Вы можете запросить удаление ваших данных, написав на <a href="mailto:celoe.remont@mail.ru" class="text-monolith-accent-warm">celoe.remont@mail.ru</a>.</p>
-      <p>Сайт использует куки для обеспечения работы форм и аналитики. Продолжая использовать сайт, вы соглашаетесь с этим.</p>
+ 
+  <!-- Hero -->
+  <section class="flex flex-col items-center justify-center text-center px-6 pt-40 pb-16"
+           style="background:linear-gradient(to bottom, #0A0A0F 0%, #F5F0E8 100%);">
+    <h1 class="font-display font-normal text-white reveal delay-1"
+        style="font-size:clamp(1.75rem,4vw,3rem);line-height:1.1;">
+      Политика конфиденциальности
+    </h1>
+    <div class="w-10 h-px mx-auto my-6 reveal-line delay-2" style="background:#2E2A24;"></div>
+    <p class="text-sm reveal delay-2" style="color:#8888A0;">
+      Последнее обновление: май 2025 года
+    </p>
+  </section>
+ 
+  <!-- Контент -->
+  <section class="py-20 px-6" style="background:#F5F0E8;">
+    <div class="max-w-2xl mx-auto prose-section">
+ 
+      <div class="reveal mb-12">
+        <h2 class="font-display text-xl mb-4" style="color:#1A1714;">1. Общие положения</h2>
+        <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+        <p style="color:#6B6560;line-height:1.8;">
+          Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта <strong style="color:#1A1714;">celoe-remont.pages.dev</strong> (далее — Сайт), принадлежащего <strong style="color:#1A1714;">[Название организации / ИП ФИО]</strong> (далее — Оператор).
+        </p>
+      </div>
+ 
+      <div class="reveal mb-12">
+        <h2 class="font-display text-xl mb-4" style="color:#1A1714;">2. Какие данные мы собираем</h2>
+        <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+        <p class="mb-4" style="color:#6B6560;line-height:1.8;">
+          При заполнении формы обратной связи на Сайте мы собираем следующие данные:
+        </p>
+        <ul class="space-y-2" style="color:#6B6560;">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Имя</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Номер телефона</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Адрес электронной почты (если указан)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Текст сообщения (если указан)</span>
+          </li>
+        </ul>
+      </div>
+ 
+      <div class="reveal mb-12">
+        <h2 class="font-display text-xl mb-4" style="color:#1A1714;">3. Цели обработки данных</h2>
+        <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+        <p style="color:#6B6560;line-height:1.8;">
+          Персональные данные используются исключительно для:
+        </p>
+        <ul class="space-y-2 mt-4" style="color:#6B6560;">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Обратной связи по заявке с сайта</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Согласования условий и сроков выполнения работ</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Заключения договора на выполнение ремонтных работ</span>
+          </li>
+        </ul>
+      </div>
+ 
+      <div class="reveal mb-12">
+        <h2 class="font-display text-xl mb-4" style="color:#1A1714;">4. Передача данных третьим лицам</h2>
+        <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+        <p style="color:#6B6560;line-height:1.8;">
+          Оператор не передаёт персональные данные третьим лицам без согласия пользователя, за исключением случаев, предусмотренных законодательством Российской Федерации. Для приёма заявок используется сервис <strong style="color:#1A1714;">Web3Forms</strong>, который обрабатывает данные в соответствии со своей политикой конфиденциальности.
+        </p>
+      </div>
+ 
+      <div class="reveal mb-12">
+        <h2 class="font-display text-xl mb-4" style="color:#1A1714;">5. Хранение данных</h2>
+        <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+        <p style="color:#6B6560;line-height:1.8;">
+          Персональные данные хранятся в течение срока, необходимого для достижения целей их обработки, но не более 3 лет с момента получения заявки. После истечения срока данные уничтожаются.
+        </p>
+      </div>
+ 
+      <div class="reveal mb-12">
+        <h2 class="font-display text-xl mb-4" style="color:#1A1714;">6. Права пользователя</h2>
+        <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+        <p class="mb-4" style="color:#6B6560;line-height:1.8;">Вы вправе:</p>
+        <ul class="space-y-2" style="color:#6B6560;">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Запросить информацию об обрабатываемых данных</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Потребовать исправления неточных данных</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Потребовать удаления персональных данных</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+            <span>Отозвать согласие на обработку данных</span>
+          </li>
+        </ul>
+      </div>
+ 
+      <div class="reveal mb-12">
+        <h2 class="font-display text-xl mb-4" style="color:#1A1714;">7. Контакты</h2>
+        <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+        <p style="color:#6B6560;line-height:1.8;">
+          По вопросам обработки персональных данных обращайтесь:
+        </p>
+        <div class="mt-4 border border-celoe-border p-6" style="background:#FAF7F2;">
+          <p class="text-sm mb-2" style="color:#6B6560;">
+            <span style="color:#A39E99;">Организация:</span> [Название организации / ИП ФИО]
+          </p>
+          <p class="text-sm mb-2" style="color:#6B6560;">
+            <span style="color:#A39E99;">ИНН:</span> [ИНН]
+          </p>
+          <p class="text-sm mb-2" style="color:#6B6560;">
+            <span style="color:#A39E99;">Email:</span>
+            <a href="mailto:celoe.remont@mail.ru" class="no-underline transition-colors duration-300"
+               style="color:#C8A882;">celoe.remont@mail.ru</a>
+          </p>
+          <p class="text-sm" style="color:#6B6560;">
+            <span style="color:#A39E99;">Телефон:</span>
+            <a href="tel:+79615192400" class="no-underline transition-colors duration-300"
+               style="color:#C8A882;">+7 (961) 519-24-00</a>
+          </p>
+        </div>
+      </div>
+ 
+      <!-- Назад -->
+      <div class="reveal text-center mt-16">
+        <a href="/contacts" class="btn-secondary">← Вернуться к контактам</a>
+      </div>
+ 
     </div>
   </section>
+ 
 </MainLayout>
