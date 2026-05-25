@@ -1,122 +1,140 @@
 ---
 ---
 
-<svg id="hex-grid" class="fixed inset-0 w-full h-full -z-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg"></svg>
+<svg id="hex-grid"
+     class="fixed inset-0 w-full h-full pointer-events-none"
+     style="z-index:1;"
+     xmlns="http://www.w3.org/2000/svg"></svg>
 
 <script>
   const svg = document.getElementById('hex-grid');
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  
-  // Размеры сот
-  const hexRadius = 36;
-  const hexHeight = hexRadius * Math.sqrt(3);
-  const hexWidth = hexRadius * 2;
-  const horizSpacing = hexWidth * 0.75;
-  const vertSpacing = hexHeight;
-  
-  // Количество сот по горизонтали и вертикали
-  const cols = Math.ceil(width / horizSpacing) + 1;
-  const rows = Math.ceil(height / vertSpacing) + 1;
-  
-  // Создаём defs для градиента
-  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-  const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
-  gradient.id = 'hex-gradient';
-  gradient.innerHTML = `
-    <stop offset="0%" stop-color="#2A2A3A" stop-opacity="0.6"/>
-    <stop offset="100%" stop-color="#2A2A3A" stop-opacity="0.05"/>
-  `;
-  defs.appendChild(gradient);
-  svg.appendChild(defs);
-  
-  // Группа для сот
-  const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  group.id = 'hex-group';
-  svg.appendChild(group);
-  
-  // Функция создания гексагона
-  function createHex(cx, cy, r) {
-    const points = [];
+
+  // ── Цвета под тёплую тёмную палитру ────────────────────────
+  const HEX_STROKE_BASE   = '#2E2A24'; // тёплый тёмный (вместо холодного #2A2A3A)
+  const HEX_STROKE_CURSOR = '#C8A882'; // золотой акцент при наведении
+  const HEX_OPACITY_BASE  = 0.35;
+
+  let width  = window.innerWidth;
+  let height = window.innerHeight;
+
+  const hexRadius     = 36;
+  const hexHeight     = hexRadius * Math.sqrt(3);
+  const hexWidth      = hexRadius * 2;
+  const horizSpacing  = hexWidth * 0.75;
+  const vertSpacing   = hexHeight;
+
+  let hexagons = [];
+  let animFrame;
+
+  function createHexPoints(cx, cy, r) {
+    const pts = [];
     for (let i = 0; i < 6; i++) {
       const angle = (Math.PI / 180) * (60 * i - 30);
-      points.push(`${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`);
+      pts.push(`${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`);
     }
-    return points.join(' ');
+    return pts.join(' ');
   }
-  
-  // Массив для хранения всех сот
-  const hexagons = [];
-  
-  // Генерируем сетку
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      const cx = col * horizSpacing + (row % 2 === 0 ? 0 : horizSpacing / 2);
-      const cy = row * vertSpacing * 0.75;
-      
-      const hex = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-      hex.setAttribute('points', createHex(cx, cy, hexRadius * 0.85));
-      hex.setAttribute('fill', 'none');
-      hex.setAttribute('stroke', '#2A2A3A');
-      hex.setAttribute('stroke-width', '0.5');
-      hex.setAttribute('opacity', '0.4');
-      hex.setAttribute('data-cx', cx);
-      hex.setAttribute('data-cy', cy);
-      
-      group.appendChild(hex);
-      hexagons.push(hex);
-    }
-  }
-  
-  // Анимация дыхания
-  let time = 0;
-  function animate() {
-    time += 0.003;
-    hexagons.forEach((hex, i) => {
-      const cx = parseFloat(hex.getAttribute('data-cx'));
-      const cy = parseFloat(hex.getAttribute('data-cy'));
-      const dist = Math.sqrt((cx - width/2) ** 2 + (cy - height/2) ** 2);
-      const wave = Math.sin(dist * 0.015 + time) * 0.15 + 0.4;
-      hex.setAttribute('opacity', wave);
-    });
-    requestAnimationFrame(animate);
-  }
-  
-  // Реакция на курсор
-  let mouseX = width / 2;
-  let mouseY = height / 2;
-  
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-  
-  function cursorEffect() {
-    hexagons.forEach((hex) => {
-      const cx = parseFloat(hex.getAttribute('data-cx'));
-      const cy = parseFloat(hex.getAttribute('data-cy'));
-      const dx = cx - mouseX;
-      const dy = cy - mouseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 180;
-      
-      if (dist < maxDist) {
-        const influence = 1 - dist / maxDist;
-        hex.setAttribute('stroke', `rgba(200, 168, 130, ${influence * 0.8})`);
-        hex.setAttribute('stroke-width', `${0.5 + influence * 1.5}`);
-        hex.setAttribute('opacity', `${0.4 + influence * 0.6}`);
-      } else {
-        hex.setAttribute('stroke', '#2A2A3A');
+
+  function buildGrid() {
+    // Очищаем
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    hexagons = [];
+
+    svg.setAttribute('width',  width);
+    svg.setAttribute('height', height);
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+    const cols = Math.ceil(width  / horizSpacing) + 2;
+    const rows = Math.ceil(height / (vertSpacing * 0.75)) + 2;
+
+    const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const cx = col * horizSpacing + (row % 2 === 0 ? 0 : horizSpacing / 2);
+        const cy = row * vertSpacing * 0.75;
+
+        const hex = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        hex.setAttribute('points',       createHexPoints(cx, cy, hexRadius * 0.85));
+        hex.setAttribute('fill',         'none');
+        hex.setAttribute('stroke',       HEX_STROKE_BASE);
         hex.setAttribute('stroke-width', '0.5');
+        hex.setAttribute('opacity',      HEX_OPACITY_BASE);
+        hex._cx = cx;
+        hex._cy = cy;
+
+        group.appendChild(hex);
+        hexagons.push(hex);
+      }
+    }
+
+    svg.appendChild(group);
+  }
+
+  // ── Анимация дыхания ─────────────────────────────────────────
+  let time   = 0;
+  let mouseX = width  / 2;
+  let mouseY = height / 2;
+
+  function tick() {
+    time += 0.003;
+
+    hexagons.forEach(hex => {
+      const cx   = hex._cx;
+      const cy   = hex._cy;
+
+      // Расстояние от курсора
+      const dx       = cx - mouseX;
+      const dy       = cy - mouseY;
+      const distMouse = Math.sqrt(dx * dx + dy * dy);
+      const maxDist   = 200;
+
+      // Волна дыхания от центра экрана
+      const distCenter = Math.sqrt((cx - width/2) ** 2 + (cy - height/2) ** 2);
+      const wave       = Math.sin(distCenter * 0.013 + time) * 0.12 + HEX_OPACITY_BASE;
+
+      if (distMouse < maxDist) {
+        const inf = 1 - distMouse / maxDist;
+        // Плавный переход цвета к золотому
+        hex.setAttribute('stroke',       `rgba(200,168,130,${(inf * 0.75).toFixed(2)})`);
+        hex.setAttribute('stroke-width', `${(0.5 + inf * 1.8).toFixed(2)}`);
+        hex.setAttribute('opacity',      `${Math.min(wave + inf * 0.55, 0.95).toFixed(2)}`);
+      } else {
+        hex.setAttribute('stroke',       HEX_STROKE_BASE);
+        hex.setAttribute('stroke-width', '0.5');
+        hex.setAttribute('opacity',      `${wave.toFixed(2)}`);
       }
     });
-    requestAnimationFrame(cursorEffect);
+
+    animFrame = requestAnimationFrame(tick);
   }
-  
-  // Запуск
-  animate();
-  cursorEffect();
-  
-  // Ресайз
-  window.addEventListener('resize', () => location.reload());
+
+  // ── Курсор ───────────────────────────────────────────────────
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
+
+  // Touch-поддержка
+  document.addEventListener('touchmove', e => {
+    mouseX = e.touches[0].clientX;
+    mouseY = e.touches[0].clientY;
+  }, { passive: true });
+
+  // ── Ресайз без перезагрузки страницы ─────────────────────────
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      cancelAnimationFrame(animFrame);
+      width  = window.innerWidth;
+      height = window.innerHeight;
+      buildGrid();
+      tick();
+    }, 200); // debounce 200ms
+  });
+
+  // ── Старт ────────────────────────────────────────────────────
+  buildGrid();
+  tick();
 </script>
