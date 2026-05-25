@@ -10,138 +10,117 @@
       <h2 class="heading-lg" style="color:#1A1714;">Пространства, которые мы создали</h2>
       <div class="divider mx-auto mt-5"></div>
       <p class="text-base mt-4 max-w-lg mx-auto" style="color:#6B6560;">
-        Найдите свой образ — каждый проект уникален и сделан без субподрядчиков
+        Каждый проект уникален и сделан без субподрядчиков
       </p>
     </div>
 
     <!-- Фильтры -->
     <div class="flex flex-wrap justify-center gap-2 mb-12 reveal delay-1">
-      <button class="filter-btn px-5 py-2.5 border text-xs uppercase tracking-widest transition-all duration-300 active"
+      <button class="filter-btn px-5 py-2.5 border text-xs uppercase tracking-widest transition-all duration-300"
               data-filter="all"
-              style="border-color:#C8A882;color:#1A1714;background:#F5F0E8;">
-        Все
-      </button>
+              style="border-color:#C8A882;color:#1A1714;background:#F5F0E8;">Все</button>
       <button class="filter-btn px-5 py-2.5 border text-xs uppercase tracking-widest transition-all duration-300"
               data-filter="classic"
-              style="border-color:#DDD8D0;color:#6B6560;background:transparent;">
-        Эхо классики
-      </button>
+              style="border-color:#DDD8D0;color:#6B6560;background:transparent;">Эхо классики</button>
       <button class="filter-btn px-5 py-2.5 border text-xs uppercase tracking-widest transition-all duration-300"
               data-filter="industrial"
-              style="border-color:#DDD8D0;color:#6B6560;background:transparent;">
-        Честная фактура
-      </button>
+              style="border-color:#DDD8D0;color:#6B6560;background:transparent;">Честная фактура</button>
       <button class="filter-btn px-5 py-2.5 border text-xs uppercase tracking-widest transition-all duration-300"
               data-filter="minimal"
-              style="border-color:#DDD8D0;color:#6B6560;background:transparent;">
-        Тишина и воздух
-      </button>
+              style="border-color:#DDD8D0;color:#6B6560;background:transparent;">Тишина и воздух</button>
     </div>
 
-    <!-- Сетка проектов -->
+    <!-- Сетка -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="portfolio-grid">
 
-      <!-- Карточка: фото + подпись. src меняй на реальные фото -->
-      <div class="portfolio-item group relative overflow-hidden cursor-pointer reveal delay-0" data-category="classic"
-           style="height:300px;background:#EDE8DF;">
+      <div class="portfolio-item group relative overflow-hidden reveal delay-0" data-category="classic"
+           style="height:300px;background:#EDE8DF;cursor:pointer;">
         <img src="/images/portfolio/classic-living.jpg" alt="Гостиная — Классика"
              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
              onerror="this.style.display='none'" />
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-             style="background:rgba(26,23,20,0.55);"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-          <p class="text-white text-sm tracking-wider uppercase">Гостиная — Классика</p>
-          <p class="text-white/50 text-xs mt-1">Эхо классики</p>
+        <!-- Единственный текстовый слой — всегда виден снизу -->
+        <div class="absolute inset-0 z-10"
+             style="background:linear-gradient(to top, rgba(26,23,20,0.7) 0%, transparent 55%);">
         </div>
-        <!-- Плейсхолдер если нет фото -->
-        <div class="absolute inset-0 flex items-end p-5 pointer-events-none" id="ph-1">
-          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Гостиная — Классика</p>
+        <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+          <p class="text-white text-sm tracking-wider">Гостиная — Классика</p>
+          <p class="text-white/40 text-[10px] tracking-widest uppercase mt-1">Эхо классики</p>
         </div>
       </div>
 
-      <div class="portfolio-item group relative overflow-hidden cursor-pointer reveal delay-1" data-category="industrial"
-           style="height:300px;background:#E8E3DC;">
+      <div class="portfolio-item group relative overflow-hidden reveal delay-1" data-category="industrial"
+           style="height:300px;background:#E8E3DC;cursor:pointer;">
         <img src="/images/portfolio/loft-kitchen.jpg" alt="Кухня — Лофт"
              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
              onerror="this.style.display='none'" />
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-             style="background:rgba(26,23,20,0.55);"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-          <p class="text-white text-sm tracking-wider uppercase">Кухня — Лофт</p>
-          <p class="text-white/50 text-xs mt-1">Честная фактура</p>
+        <div class="absolute inset-0 z-10"
+             style="background:linear-gradient(to top, rgba(26,23,20,0.7) 0%, transparent 55%);">
         </div>
-        <div class="absolute inset-0 flex items-end p-5 pointer-events-none">
-          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Кухня — Лофт</p>
+        <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+          <p class="text-white text-sm tracking-wider">Кухня — Лофт</p>
+          <p class="text-white/40 text-[10px] tracking-widest uppercase mt-1">Честная фактура</p>
         </div>
       </div>
 
-      <div class="portfolio-item group relative overflow-hidden cursor-pointer reveal delay-2" data-category="minimal"
-           style="height:300px;background:#F0EBE3;">
+      <div class="portfolio-item group relative overflow-hidden reveal delay-2" data-category="minimal"
+           style="height:300px;background:#F0EBE3;cursor:pointer;">
         <img src="/images/portfolio/scandi-bedroom.jpg" alt="Спальня — Сканди"
              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
              onerror="this.style.display='none'" />
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-             style="background:rgba(26,23,20,0.55);"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-          <p class="text-white text-sm tracking-wider uppercase">Спальня — Сканди</p>
-          <p class="text-white/50 text-xs mt-1">Тишина и воздух</p>
+        <div class="absolute inset-0 z-10"
+             style="background:linear-gradient(to top, rgba(26,23,20,0.7) 0%, transparent 55%);">
         </div>
-        <div class="absolute inset-0 flex items-end p-5 pointer-events-none">
-          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Спальня — Сканди</p>
+        <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+          <p class="text-white text-sm tracking-wider">Спальня — Сканди</p>
+          <p class="text-white/40 text-[10px] tracking-widest uppercase mt-1">Тишина и воздух</p>
         </div>
       </div>
 
-      <div class="portfolio-item group relative overflow-hidden cursor-pointer reveal delay-0" data-category="classic"
-           style="height:300px;background:#EDE8DF;">
+      <div class="portfolio-item group relative overflow-hidden reveal delay-0" data-category="classic"
+           style="height:300px;background:#EDE8DF;cursor:pointer;">
         <img src="/images/portfolio/classic-bedroom.jpg" alt="Спальня — Классика"
              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
              onerror="this.style.display='none'" />
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-             style="background:rgba(26,23,20,0.55);"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-          <p class="text-white text-sm tracking-wider uppercase">Спальня — Классика</p>
-          <p class="text-white/50 text-xs mt-1">Эхо классики</p>
+        <div class="absolute inset-0 z-10"
+             style="background:linear-gradient(to top, rgba(26,23,20,0.7) 0%, transparent 55%);">
         </div>
-        <div class="absolute inset-0 flex items-end p-5 pointer-events-none">
-          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Спальня — Классика</p>
+        <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+          <p class="text-white text-sm tracking-wider">Спальня — Классика</p>
+          <p class="text-white/40 text-[10px] tracking-widest uppercase mt-1">Эхо классики</p>
         </div>
       </div>
 
-      <div class="portfolio-item group relative overflow-hidden cursor-pointer reveal delay-1" data-category="industrial"
-           style="height:300px;background:#E8E3DC;">
+      <div class="portfolio-item group relative overflow-hidden reveal delay-1" data-category="industrial"
+           style="height:300px;background:#E8E3DC;cursor:pointer;">
         <img src="/images/portfolio/industrial-living.jpg" alt="Гостиная — Индастриал"
              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
              onerror="this.style.display='none'" />
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-             style="background:rgba(26,23,20,0.55);"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-          <p class="text-white text-sm tracking-wider uppercase">Гостиная — Индастриал</p>
-          <p class="text-white/50 text-xs mt-1">Честная фактура</p>
+        <div class="absolute inset-0 z-10"
+             style="background:linear-gradient(to top, rgba(26,23,20,0.7) 0%, transparent 55%);">
         </div>
-        <div class="absolute inset-0 flex items-end p-5 pointer-events-none">
-          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Гостиная — Индастриал</p>
+        <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+          <p class="text-white text-sm tracking-wider">Гостиная — Индастриал</p>
+          <p class="text-white/40 text-[10px] tracking-widest uppercase mt-1">Честная фактура</p>
         </div>
       </div>
 
-      <div class="portfolio-item group relative overflow-hidden cursor-pointer reveal delay-2" data-category="minimal"
-           style="height:300px;background:#F0EBE3;">
+      <div class="portfolio-item group relative overflow-hidden reveal delay-2" data-category="minimal"
+           style="height:300px;background:#F0EBE3;cursor:pointer;">
         <img src="/images/portfolio/minimal-kitchen.jpg" alt="Кухня — Минимализм"
              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
              onerror="this.style.display='none'" />
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-             style="background:rgba(26,23,20,0.55);"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-          <p class="text-white text-sm tracking-wider uppercase">Кухня — Минимализм</p>
-          <p class="text-white/50 text-xs mt-1">Тишина и воздух</p>
+        <div class="absolute inset-0 z-10"
+             style="background:linear-gradient(to top, rgba(26,23,20,0.7) 0%, transparent 55%);">
         </div>
-        <div class="absolute inset-0 flex items-end p-5 pointer-events-none">
-          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Кухня — Минимализм</p>
+        <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+          <p class="text-white text-sm tracking-wider">Кухня — Минимализм</p>
+          <p class="text-white/40 text-[10px] tracking-widest uppercase mt-1">Тишина и воздух</p>
         </div>
       </div>
 
     </div>
 
-    <!-- CTA под портфолио -->
+    <!-- CTA -->
     <div class="text-center mt-16 reveal delay-2">
       <p class="text-sm mb-6" style="color:#A39E99;">Хотите результат как на фото?</p>
       <a href="/zero-day" class="btn-primary">Обсудить свой проект</a>
@@ -156,23 +135,19 @@
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Сброс стилей
       filterBtns.forEach(b => {
         b.style.borderColor = '#DDD8D0';
         b.style.color       = '#6B6560';
         b.style.background  = 'transparent';
-        b.classList.remove('active');
       });
-      // Активная кнопка
       btn.style.borderColor = '#C8A882';
       btn.style.color       = '#1A1714';
       btn.style.background  = '#F5F0E8';
-      btn.classList.add('active');
 
       const filter = btn.dataset.filter;
       items.forEach(item => {
-        const show = filter === 'all' || item.dataset.category === filter;
-        item.style.display = show ? 'block' : 'none';
+        item.style.display = (filter === 'all' || item.dataset.category === filter)
+          ? 'block' : 'none';
       });
     });
   });
