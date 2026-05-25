@@ -72,13 +72,13 @@
 
   /* Метка — маленький uppercase над заголовком */
   .label {
-    @apply text-xs uppercase tracking-[0.22em] font-body font-400;
+    @apply text-xs uppercase tracking-[0.22em] font-body font-normal;
     color: #A39E99; /* celoe-text-muted */
   }
 
   /* Метка на тёмном фоне */
   .label-dark {
-    @apply text-xs uppercase tracking-[0.22em] font-body;
+    @apply text-xs uppercase tracking-[0.22em] font-body font-normal;
     color: #4A4A5E; /* monolith-text-muted */
   }
 
@@ -170,7 +170,7 @@
   .btn-hero-ghost {
     @apply inline-flex items-center justify-center no-underline
            px-8 py-3.5
-           text-sm uppercase tracking-widest font-300
+           text-sm uppercase tracking-widest font-light
            border
            transition-all duration-500;
     border-color: #2E2A24;
