@@ -1,43 +1,265 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+/* ─────────────────────────────────────────────────────────────────
+   ЦЕЛОЕ — Global CSS
+   Порядок: импорты → tailwind → base → components → utilities
+───────────────────────────────────────────────────────────────── */
+
+/* ── Шрифты ─────────────────────────────────────────────────────
+   Playfair Display — заголовки (засечки, элегантность)
+   Rubik            — тело текста (без засечек, тепло, кириллица) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Rubik:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ── Base ────────────────────────────────────────────────────── */
 @layer base {
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; background-color: #0A0A0F; color: #D0D0D8; font-family: 'Inter', sans-serif; }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #0A0A0F; }
-  ::-webkit-scrollbar-thumb { background: #1F1F2E; border-radius: 3px; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    background-color: #F5F0E8;      /* celoe-bg */
+    color: #1A1714;                 /* celoe-text-primary */
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Скроллбар — под светлую тему */
+  ::-webkit-scrollbar       { width: 5px; }
+  ::-webkit-scrollbar-track { background: #EDE8DF; }
+  ::-webkit-scrollbar-thumb { background: #B8B2A8; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C8A882; }
+
+  /* Выделение текста — фирменный золотой */
+  ::selection {
+    background-color: #C8A882;
+    color: #1A1714;
+  }
+
+  img { display: block; max-width: 100%; }
+  a   { color: inherit; }
 }
 
+/* ── Components ──────────────────────────────────────────────── */
 @layer components {
+
+  /* ── Типографика ─────────────────────────────────────────── */
+
+  .heading-xl {
+    @apply font-display font-normal leading-tight;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    letter-spacing: -0.01em;
+  }
+
+  .heading-lg {
+    @apply font-display font-normal leading-tight;
+    font-size: clamp(1.6rem, 3.5vw, 2.75rem);
+    letter-spacing: -0.01em;
+  }
+
+  .heading-md {
+    @apply font-display font-normal leading-snug;
+    font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  }
+
+  /* Метка — маленький uppercase над заголовком */
+  .label {
+    @apply text-xs uppercase tracking-[0.22em] font-body font-400;
+    color: #A39E99; /* celoe-text-muted */
+  }
+
+  /* Метка на тёмном фоне */
+  .label-dark {
+    @apply text-xs uppercase tracking-[0.22em] font-body;
+    color: #4A4A5E; /* monolith-text-muted */
+  }
+
+  /* ── Разделители ─────────────────────────────────────────── */
+
+  /* Светлая версия (в светлых секциях) */
+  .divider {
+    @apply w-10 h-px my-5;
+    background-color: #DDD8D0;
+    transform-origin: left;
+  }
+
+  /* Тёмная версия (в hero и тёмных секциях) */
+  .divider-dark {
+    @apply w-10 h-px my-5;
+    background-color: #1F1F2E;
+    transform-origin: left;
+  }
+
+  /* ── Кнопки — светлые секции ─────────────────────────────── */
+
+  /* Первичная: тёмная заливка → золото при наведении */
+  .btn-primary {
+    @apply inline-flex items-center justify-center no-underline
+           px-8 py-3.5
+           text-sm uppercase tracking-widest font-medium
+           border relative overflow-hidden z-10
+           transition-colors duration-500;
+    background-color: #2A2620;
+    border-color:     #2A2620;
+    color:            #FAF7F2;
+  }
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 -z-10 transition-transform duration-500;
+    background-color: #C8A882;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .btn-primary:hover {
+    border-color: #C8A882;
+    color: #1A1714;
+  }
+  .btn-primary:hover::before { transform: scaleX(1); }
+
+  /* Вторичная: контурная → золото при наведении */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center no-underline
+           px-8 py-3.5
+           text-sm uppercase tracking-widest font-medium
+           border relative overflow-hidden z-10
+           transition-all duration-500;
+    border-color: #DDD8D0;
+    color:        #6B6560;
+    background:   transparent;
+  }
+  .btn-secondary:hover {
+    border-color: #C8A882;
+    color:        #C8A882;
+  }
+
+  /* ── Кнопки — тёмный hero ────────────────────────────────── */
+
+  /* Главная на тёмном: контурная светлая → золото */
+  .btn-hero {
+    @apply inline-flex items-center justify-center no-underline
+           px-8 py-3.5
+           text-sm uppercase tracking-widest font-medium
+           border relative overflow-hidden z-10
+           transition-colors duration-500;
+    border-color: #4A4A5E;
+    color:        #E8E8F0;
+    background:   transparent;
+  }
+  .btn-hero::before {
+    content: '';
+    @apply absolute inset-0 -z-10 transition-transform duration-500;
+    background-color: #C8A882;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .btn-hero:hover {
+    border-color: #C8A882;
+    color: #0A0A0F;
+  }
+  .btn-hero:hover::before { transform: scaleX(1); }
+
+  /* Телефон / вторичная на тёмном */
+  .btn-hero-ghost {
+    @apply inline-flex items-center justify-center no-underline
+           px-8 py-3.5
+           text-sm uppercase tracking-widest font-300
+           border
+           transition-all duration-500;
+    border-color: #2E2A24;
+    color:        #8888A0;
+    background:   transparent;
+  }
+  .btn-hero-ghost:hover {
+    border-color: #C8A882;
+    color:        #C8A882;
+  }
+
+  /* Обратная совместимость — старые компоненты используют .btn-monolith */
   .btn-monolith {
-    @apply inline-flex items-center justify-center px-8 py-3.5 border border-monolith-border text-monolith-text-primary text-sm uppercase tracking-widest relative overflow-hidden z-10 transition-all duration-500;
+    @apply btn-hero;
   }
-  .btn-monolith::before {
-    content: ''; @apply absolute inset-0 bg-monolith-accent-warm scale-x-0 origin-left transition-transform duration-500 -z-10;
+
+}
+
+/* ── Utilities ───────────────────────────────────────────────── */
+@layer utilities {
+
+  /* ── Система анимаций при скролле ───────────────────────────
+     Использование:
+       <div class="reveal">...</div>          — базовое появление
+       <div class="reveal" style="--delay:0.15s">...</div>  — с задержкой
+     JS добавляет класс .is-visible когда элемент в поле зрения */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+      opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s);
+    will-change: opacity, transform;
   }
-  .btn-monolith:hover { @apply border-monolith-accent-warm text-monolith-bg; }
-  .btn-monolith:hover::before { @apply scale-x-100; }
-  .heading-xl { @apply font-display font-normal leading-tight; font-size: clamp(2rem, 4vw, 3.5rem); }
-  .heading-lg { @apply font-display font-normal leading-tight; font-size: clamp(1.5rem, 3vw, 2.5rem); }
-  .divider { @apply w-10 h-px bg-monolith-border my-6; }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Только прозрачность (без сдвига) — для линий, иконок */
+  .reveal-fade {
+    opacity: 0;
+    transition: opacity 0.6s ease var(--delay, 0s);
+    will-change: opacity;
+  }
+  .reveal-fade.is-visible { opacity: 1; }
+
+  /* Анимация линии-разделителя */
+  .reveal-line {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s);
+    will-change: transform;
+  }
+  .reveal-line.is-visible { transform: scaleX(1); }
+
+  /* Готовые задержки для групп элементов */
+  .delay-0   { --delay: 0s;     }
+  .delay-1   { --delay: 0.1s;   }
+  .delay-2   { --delay: 0.2s;   }
+  .delay-3   { --delay: 0.3s;   }
+  .delay-4   { --delay: 0.4s;   }
+  .delay-5   { --delay: 0.5s;   }
+
 }
-html {
-  scroll-snap-type: none;
-  scroll-behavior: auto;
-}
+
+/* ── Специфичные переопределения ─────────────────────────────── */
+
+/* Убираем scroll-snap (может мешать плавной прокрутке) */
+html { scroll-snap-type: none; scroll-behavior: smooth; }
+
 body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: auto;
   touch-action: pan-y;
 }
-.manifesto-block, .vector-card, .portfolio-item {
-  will-change: opacity;
-}
+
+/* Бургер: показываем только на мобильных */
 #burger { display: none !important; }
 @media (max-width: 767px) {
   #burger { display: flex !important; }
+}
+
+/* will-change — только там где нужно, без злоупотреблений */
+.manifesto-block,
+.vector-card,
+.portfolio-item {
+  will-change: opacity, transform;
 }
