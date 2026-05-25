@@ -3,53 +3,164 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout>
-  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24">
-    <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-6">Свяжитесь с нами</p>
-    <h1 class="heading-xl mb-6 text-3xl md:text-5xl lg:text-6xl">Контакты</h1>
-    <div class="divider mx-auto"></div>
-    <p class="text-monolith-text-secondary text-lg max-w-xl mb-8">
-      Начните с Нулевого Дня. Закончите домом, который понимает вас без слов.
-    </p>
 
-    <div class="bg-monolith-surface border border-monolith-border p-8 max-w-lg w-full text-left space-y-6 mb-6">
-      <div>
-        <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-1">Телефон</p>
-        <a href="tel:+79615192400" class="text-white text-lg hover:text-monolith-accent-warm transition-colors">+7 (961) 519-24-00</a>
-      </div>
-      <div>
-        <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-1">Email</p>
-        <a href="mailto:celoe.remont@mail.ru" class="text-white text-lg hover:text-monolith-accent-warm transition-colors">celoe.remont@mail.ru</a>
+  <!-- Hero -->
+  <section class="flex flex-col items-center justify-center text-center px-6 pt-40 pb-16"
+           style="background:linear-gradient(to bottom, #0A0A0F 0%, #F5F0E8 100%);">
+    <p class="label-dark mb-5 reveal">Начнём?</p>
+    <h1 class="font-display font-normal text-white reveal delay-1"
+        style="font-size:clamp(2rem,5vw,3.75rem);line-height:1.1;">
+      Контакты
+    </h1>
+    <div class="w-10 h-px mx-auto my-6 reveal-line delay-2" style="background:#2E2A24;"></div>
+    <p class="text-lg max-w-lg reveal delay-2" style="color:#8888A0;">
+      Начните с Нулевого Дня. Закончите домом,<br/>который понимает вас без слов.
+    </p>
+  </section>
+
+  <!-- Контактный блок -->
+  <section class="py-20 px-6" style="background:#F5F0E8;">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Левая колонка: контакты + форма -->
+        <div class="flex flex-col gap-6">
+
+          <!-- Телефон и email -->
+          <div class="border border-celoe-border p-8 reveal" style="background:#FAF7F2;">
+            <p class="label mb-6">Прямая связь</p>
+
+            <div class="mb-6">
+              <p class="text-xs tracking-widest uppercase mb-2" style="color:#A39E99;">Телефон</p>
+              <a href="tel:+79615192400"
+                 class="font-display text-2xl no-underline transition-colors duration-300"
+                 style="color:#1A1714;"
+                 onmouseover="this.style.color='#C8A882'" onmouseout="this.style.color='#1A1714'">
+                +7 (961) 519-24-00
+              </a>
+            </div>
+
+            <div class="border-t border-celoe-border pt-6">
+              <p class="text-xs tracking-widest uppercase mb-2" style="color:#A39E99;">Email</p>
+              <a href="mailto:celoe.remont@mail.ru"
+                 class="text-base no-underline transition-colors duration-300"
+                 style="color:#1A1714;"
+                 onmouseover="this.style.color='#C8A882'" onmouseout="this.style.color='#1A1714'">
+                celoe.remont@mail.ru
+              </a>
+            </div>
+
+            <div class="border-t border-celoe-border pt-6 mt-6">
+              <p class="text-xs tracking-widest uppercase mb-2" style="color:#A39E99;">Город</p>
+              <p style="color:#6B6560;">Новороссийск</p>
+            </div>
+          </div>
+
+          <!-- Блок доверия -->
+          <div class="border border-celoe-border p-8 reveal delay-1" style="background:#FAF7F2;">
+            <p class="label mb-5">Почему нам доверяют</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+                <p class="text-sm leading-relaxed" style="color:#6B6560;">Фиксированная смета — цена не изменится</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+                <p class="text-sm leading-relaxed" style="color:#6B6560;">Сдача строго в срок по договору</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+                <p class="text-sm leading-relaxed" style="color:#6B6560;">Только собственная команда, без субподрядчиков</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+                <p class="text-sm leading-relaxed" style="color:#6B6560;">Видеонаблюдение на объекте 24/7</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:#C8A882;"></div>
+                <p class="text-sm leading-relaxed" style="color:#6B6560;">Оплата только после приёмки каждого модуля</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Правая колонка: форма -->
+        <div class="reveal delay-1">
+          <div class="border border-celoe-border p-8" style="background:#FAF7F2;">
+            <p class="font-display text-xl mb-2" style="color:#1A1714;">Запланировать Нулевой День</p>
+            <p class="text-sm mb-8" style="color:#A39E99;">Перезвоним в течение часа. Первая встреча бесплатна.</p>
+
+            <form id="contact-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  class="flex flex-col gap-4">
+
+              <input type="hidden" name="access_key" value="5d4b4402-ac3b-4333-b5af-ca423b67ce5a" />
+              <input type="hidden" name="subject" value="Заявка с сайта Целое" />
+              <input type="hidden" name="redirect" value="https://celoe-remont.pages.dev/contacts?sent=true" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
+
+              <input type="text" name="name" placeholder="Имя" required
+                     class="form-input w-full bg-transparent border px-4 py-3 text-sm focus:outline-none transition-colors duration-300"
+                     style="border-color:#DDD8D0;color:#1A1714;" />
+
+              <input type="tel" name="phone" placeholder="Телефон" required
+                     class="form-input w-full bg-transparent border px-4 py-3 text-sm focus:outline-none transition-colors duration-300"
+                     style="border-color:#DDD8D0;color:#1A1714;" />
+
+              <input type="email" name="email" placeholder="Email (необязательно)"
+                     class="form-input w-full bg-transparent border px-4 py-3 text-sm focus:outline-none transition-colors duration-300"
+                     style="border-color:#DDD8D0;color:#1A1714;" />
+
+              <textarea name="message" placeholder="Опишите ваш проект (необязательно)" rows="3"
+                        class="form-input w-full bg-transparent border px-4 py-3 text-sm focus:outline-none transition-colors duration-300 resize-none"
+                        style="border-color:#DDD8D0;color:#1A1714;"></textarea>
+
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" name="agree" required
+                       class="mt-0.5 shrink-0" style="accent-color:#C8A882;" />
+                <span class="text-xs leading-relaxed" style="color:#A39E99;">
+                  Я согласен на
+                  <a href="/privacy" class="no-underline transition-colors duration-300"
+                     style="color:#C8A882;">обработку персональных данных</a>
+                </span>
+              </label>
+
+              <button type="submit" class="btn-primary w-full mt-2">
+                Отправить заявку
+              </button>
+            </form>
+
+            <!-- Сообщение об успехе -->
+            <div id="success-msg" class="hidden text-center py-8">
+              <p class="font-display text-xl mb-3" style="color:#1A1714;">Заявка отправлена</p>
+              <div class="w-8 h-px mx-auto mb-4" style="background:#C8A882;"></div>
+              <p class="text-sm" style="color:#6B6560;">Мы свяжемся с вами в течение часа.</p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <form action="https://api.web3forms.com/submit" method="POST" class="bg-monolith-surface border border-monolith-border p-8 max-w-lg w-full text-left space-y-6 mb-8">
-      <input type="hidden" name="access_key" value="5d4b4402-ac3b-4333-b5af-ca423b67ce5a">
-      <input type="hidden" name="subject" value="Заявка с сайта Целое">
-      <input type="hidden" name="redirect" value="https://celoe-remont.pages.dev/contacts?sent=true">
-      <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
-      
-      <h3 class="font-display text-xl text-white mb-2">Запланировать Нулевой День</h3>
-      <p class="text-monolith-text-muted text-sm mb-4">Оставьте контакты — мы перезвоним в течение часа.</p>
-      
-      <input type="text" name="name" placeholder="Имя" required class="w-full bg-transparent border border-monolith-border px-4 py-3 text-white text-sm focus:outline-none focus:border-monolith-accent-warm transition-colors" />
-      <input type="tel" name="phone" placeholder="Телефон" required class="w-full bg-transparent border border-monolith-border px-4 py-3 text-white text-sm focus:outline-none focus:border-monolith-accent-warm transition-colors" />
-      <input type="email" name="email" placeholder="Email" class="w-full bg-transparent border border-monolith-border px-4 py-3 text-white text-sm focus:outline-none focus:border-monolith-accent-warm transition-colors" />
-      <textarea name="message" placeholder="Опишите ваш проект (необязательно)" rows="3" class="w-full bg-transparent border border-monolith-border px-4 py-3 text-white text-sm focus:outline-none focus:border-monolith-accent-warm transition-colors resize-none"></textarea>
-      <label class="flex items-start gap-2 text-monolith-text-muted text-xs cursor-pointer">
-        <input type="checkbox" name="agree" required class="mt-0.5 accent-monolith-accent-warm" />
-        <span>Я согласен на <a href="/privacy" class="text-monolith-accent-warm hover:underline">обработку персональных данных</a></span>
-      </label>
-      <button type="submit" class="btn-monolith w-full">Отправить</button>
-    </form>
-    
-    <p id="success-msg" class="text-monolith-accent-warm text-sm hidden mb-12">Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.</p>
   </section>
+
 </MainLayout>
 
+<style>
+  .form-input::placeholder { color: #A39E99; }
+  .form-input:focus { border-color: #C8A882 !important; }
+</style>
+
 <script>
+  // Показываем успех если redirect вернул ?sent=true
   if (window.location.search.includes('sent=true')) {
-    document.getElementById('success-msg').classList.remove('hidden');
-    document.querySelector('form').style.display = 'none';
+    const form = document.getElementById('contact-form');
+    const msg  = document.getElementById('success-msg');
+    if (form) form.style.display = 'none';
+    if (msg)  msg.classList.remove('hidden');
     window.history.replaceState({}, document.title, '/contacts');
   }
 </script>

@@ -3,86 +3,140 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout>
-  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24">
-    <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-6">Финансовый стандарт</p>
-    <h1 class="heading-xl mb-6 text-3xl md:text-5xl lg:text-6xl">Модули готовности</h1>
-    <div class="divider mx-auto"></div>
-    <p class="text-monolith-text-secondary text-lg max-w-xl mb-16">
-      Вы платите только за то, что уже приняли. Пока модуль не сдан по чек-листу — он не оплачивается.
+
+  <!-- Hero -->
+  <section class="flex flex-col items-center justify-center text-center px-6 pt-40 pb-24"
+           style="background:linear-gradient(to bottom, #0A0A0F 0%, #F5F0E8 100%);">
+    <p class="label-dark mb-5 reveal">Финансовый стандарт</p>
+    <h1 class="font-display font-normal text-white reveal delay-1"
+        style="font-size:clamp(2rem,5vw,3.75rem);line-height:1.1;">
+      Модули готовности
+    </h1>
+    <div class="w-10 h-px mx-auto my-6 reveal-line delay-2" style="background:#2E2A24;"></div>
+    <p class="text-lg max-w-xl reveal delay-2" style="color:#8888A0;">
+      Вы платите только за то, что уже приняли.<br/>Пока модуль не сдан — он не оплачивается.
     </p>
   </section>
 
-  <section class="py-24 px-6">
-    <div class="max-w-4xl mx-auto space-y-24">
-      
-      <div class="flex flex-col md:flex-row gap-12 items-center">
+  <!-- Четыре модуля -->
+  <section class="py-24 px-6" style="background:#F5F0E8;">
+    <div class="max-w-4xl mx-auto space-y-20">
+
+      <!-- 1 -->
+      <div class="flex flex-col md:flex-row gap-12 items-start reveal">
         <div class="flex-1">
-          <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-3">Модуль первый</p>
-          <h3 class="font-display text-2xl text-white mb-4">Тишина и Сон</h3>
-          <p class="text-monolith-text-secondary leading-relaxed mb-4">
+          <p class="label mb-3">Модуль первый</p>
+          <h3 class="font-display text-2xl mb-4" style="color:#1A1714;">Тишина и Сон</h3>
+          <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+          <p class="leading-relaxed mb-5" style="color:#6B6560;">
             Спальни, детские, гардеробные. Полная чистовая отделка, шумоизоляция, тёплый пол, все розетки и выключатели, освещение. Шторы уже висят.
           </p>
-          <p class="text-monolith-text-muted text-xs italic">
-            Чек-лист: ровность стен, работа розеток, отсутствие скрипов, плавность дверей, герметичность откосов. Главный тест: вы заходите, закрываете дверь — тишина.
-          </p>
+          <div class="border-l-2 pl-4" style="border-color:#DDD8D0;">
+            <p class="text-xs mb-1" style="color:#A39E99;">Чек-лист приёмки:</p>
+            <p class="text-xs leading-relaxed" style="color:#B8B2A8;">
+              Ровность стен, работа розеток, отсутствие скрипов, плавность дверей, герметичность откосов. Главный тест: вы заходите, закрываете дверь — тишина.
+            </p>
+          </div>
         </div>
-        <div class="flex-1 bg-monolith-surface h-64 flex items-center justify-center text-monolith-text-muted text-sm">[Спальня — Тишина и Сон]</div>
+        <div class="flex-1 flex items-center justify-center border border-celoe-border reveal delay-1"
+             style="height:240px;background:#FAF7F2;">
+          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Спальня — Тишина и Сон</p>
+        </div>
       </div>
 
-      <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
+      <div class="w-full h-px" style="background:#DDD8D0;"></div>
+
+      <!-- 2 -->
+      <div class="flex flex-col md:flex-row-reverse gap-12 items-start reveal">
         <div class="flex-1">
-          <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-3">Модуль второй</p>
-          <h3 class="font-display text-2xl text-white mb-4">Сердце Дома</h3>
-          <p class="text-monolith-text-secondary leading-relaxed mb-4">
+          <p class="label mb-3">Модуль второй</p>
+          <h3 class="font-display text-2xl mb-4" style="color:#1A1714;">Сердце Дома</h3>
+          <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+          <p class="leading-relaxed mb-5" style="color:#6B6560;">
             Кухня, столовая, гостиная. Полностью готовая кухня с подключённой техникой, чистовая отделка, освещение, системы хранения. Работающая вода, безупречные стыки.
           </p>
-          <p class="text-monolith-text-muted text-xs italic">
-            Чек-лист: запуск всей техники, давление воды, зазоры в стыках, подсветка рабочей зоны, ровность фартука.
-          </p>
+          <div class="border-l-2 pl-4" style="border-color:#DDD8D0;">
+            <p class="text-xs mb-1" style="color:#A39E99;">Чек-лист приёмки:</p>
+            <p class="text-xs leading-relaxed" style="color:#B8B2A8;">
+              Запуск всей техники, давление воды, зазоры в стыках, подсветка рабочей зоны, ровность фартука.
+            </p>
+          </div>
         </div>
-        <div class="flex-1 bg-monolith-surface h-64 flex items-center justify-center text-monolith-text-muted text-sm">[Кухня — Сердце Дома]</div>
+        <div class="flex-1 flex items-center justify-center border border-celoe-border reveal delay-1"
+             style="height:240px;background:#FAF7F2;">
+          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Кухня — Сердце Дома</p>
+        </div>
       </div>
 
-      <div class="flex flex-col md:flex-row gap-12 items-center">
+      <div class="w-full h-px" style="background:#DDD8D0;"></div>
+
+      <!-- 3 -->
+      <div class="flex flex-col md:flex-row gap-12 items-start reveal">
         <div class="flex-1">
-          <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-3">Модуль третий</p>
-          <h3 class="font-display text-2xl text-white mb-4">Чистота и Ритм</h3>
-          <p class="text-monolith-text-secondary leading-relaxed mb-4">
+          <p class="label mb-3">Модуль третий</p>
+          <h3 class="font-display text-2xl mb-4" style="color:#1A1714;">Чистота и Ритм</h3>
+          <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+          <p class="leading-relaxed mb-5" style="color:#6B6560;">
             Ванные комнаты, санузлы. Гидроизоляция, плитка, сантехника, зеркала, освещение, вентиляция. Можно принять душ в день приёмки.
           </p>
-          <p class="text-monolith-text-muted text-xs italic">
-            Чек-лист: тест на протечки, геометрия плитки под лазером, работа вытяжки, температура полотенцесушителя.
-          </p>
+          <div class="border-l-2 pl-4" style="border-color:#DDD8D0;">
+            <p class="text-xs mb-1" style="color:#A39E99;">Чек-лист приёмки:</p>
+            <p class="text-xs leading-relaxed" style="color:#B8B2A8;">
+              Тест на протечки, геометрия плитки под лазером, работа вытяжки, температура полотенцесушителя.
+            </p>
+          </div>
         </div>
-        <div class="flex-1 bg-monolith-surface h-64 flex items-center justify-center text-monolith-text-muted text-sm">[Ванная — Чистота и Ритм]</div>
+        <div class="flex-1 flex items-center justify-center border border-celoe-border reveal delay-1"
+             style="height:240px;background:#FAF7F2;">
+          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Ванная — Чистота и Ритм</p>
+        </div>
       </div>
 
-      <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
+      <div class="w-full h-px" style="background:#DDD8D0;"></div>
+
+      <!-- 4 -->
+      <div class="flex flex-col md:flex-row-reverse gap-12 items-start reveal">
         <div class="flex-1">
-          <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-3">Модуль четвёртый</p>
-          <h3 class="font-display text-2xl text-white mb-4">Общий Сбор</h3>
-          <p class="text-monolith-text-secondary leading-relaxed mb-4">
+          <p class="label mb-3">Модуль четвёртый</p>
+          <h3 class="font-display text-2xl mb-4" style="color:#1A1714;">Общий Сбор</h3>
+          <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+          <p class="leading-relaxed mb-5" style="color:#6B6560;">
             Прихожая, коридоры, встроенные шкафы, умный дом, клининг, расстановка мебели. Квартира готова к вашему чемодану.
           </p>
-          <p class="text-monolith-text-muted text-xs italic">
-            Чек-лист: сценарии умного дома, плавность всех дверей и ящиков, тест белой перчаткой, интернет и роутер, осмотр при дневном и вечернем свете.
-          </p>
+          <div class="border-l-2 pl-4" style="border-color:#DDD8D0;">
+            <p class="text-xs mb-1" style="color:#A39E99;">Чек-лист приёмки:</p>
+            <p class="text-xs leading-relaxed" style="color:#B8B2A8;">
+              Сценарии умного дома, плавность всех дверей и ящиков, тест белой перчаткой, интернет и роутер, осмотр при дневном и вечернем свете.
+            </p>
+          </div>
         </div>
-        <div class="flex-1 bg-monolith-surface h-64 flex items-center justify-center text-monolith-text-muted text-sm">[Прихожая — Общий Сбор]</div>
+        <div class="flex-1 flex items-center justify-center border border-celoe-border reveal delay-1"
+             style="height:240px;background:#FAF7F2;">
+          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Прихожая — Общий Сбор</p>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <section class="py-24 px-6 bg-monolith-surface">
+  <!-- CTA -->
+  <section class="py-24 px-6" style="background:#EDE8DF;">
     <div class="max-w-2xl mx-auto text-center">
-      <h2 class="heading-lg mb-6">Деньги — только после вашей подписи.</h2>
-      <p class="text-monolith-text-secondary leading-relaxed mb-8">
+      <p class="label mb-4 reveal">Главный принцип</p>
+      <h2 class="heading-lg mb-5 reveal delay-1" style="color:#1A1714;">
+        Деньги — только<br/>после вашей подписи.
+      </h2>
+      <div class="w-10 h-px mx-auto mb-8 reveal-line delay-2" style="background:#C8A882;"></div>
+      <p class="leading-relaxed mb-10 reveal delay-2" style="color:#6B6560;">
         Мы не просим предоплату за следующий модуль, пока вы не приняли предыдущий. Ваша подпись под актом — единственный триггер для следующего платежа. Это делает нас уязвимыми? Да. Но это единственный способ быть уверенными в каждом сантиметре вашего дома.
       </p>
-      <button class="btn-monolith">
-        Начать путь к Цельному ремонту
-      </button>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center reveal delay-3">
+        <a href="/contacts" class="btn-primary">Начать путь к Цельному ремонту</a>
+        <a href="/zero-day" class="btn-secondary">
+          Начать с Нулевого Дня →
+        </a>
+      </div>
     </div>
   </section>
+
 </MainLayout>

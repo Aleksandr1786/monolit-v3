@@ -3,64 +3,95 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout>
-  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24">
-    <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-6">Этап второй</p>
-    <h1 class="heading-xl mb-6 text-3xl md:text-5xl lg:text-6xl">Цифровая репетиция</h1>
-    <div class="divider mx-auto"></div>
-    <p class="text-monolith-text-secondary text-lg max-w-xl mb-16">
-      Вы увидите каждую деталь до того, как она станет реальностью.
+
+  <!-- Hero -->
+  <section class="flex flex-col items-center justify-center text-center px-6 pt-40 pb-24"
+           style="background:linear-gradient(to bottom, #0A0A0F 0%, #F5F0E8 100%);">
+    <p class="label-dark mb-5 reveal">Этап второй</p>
+    <h1 class="font-display font-normal text-white reveal delay-1"
+        style="font-size:clamp(2rem,5vw,3.75rem);line-height:1.1;">
+      Цифровая репетиция
+    </h1>
+    <div class="w-10 h-px mx-auto my-6 reveal-line delay-2" style="background:#2E2A24;"></div>
+    <p class="text-lg max-w-xl reveal delay-2" style="color:#8888A0;">
+      Вы увидите каждую деталь до того,<br/>как она станет реальностью.
     </p>
   </section>
 
-  <section class="py-24 px-6">
-    <div class="max-w-4xl mx-auto space-y-24">
-      
-      <div class="flex flex-col md:flex-row gap-12 items-center">
+  <!-- Три акта -->
+  <section class="py-24 px-6" style="background:#F5F0E8;">
+    <div class="max-w-4xl mx-auto space-y-20">
+
+      <div class="flex flex-col md:flex-row gap-12 items-center reveal">
         <div class="flex-1">
-          <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-3">Акт первый</p>
-          <h3 class="font-display text-2xl text-white mb-4">Инженерный каркас</h3>
-          <p class="text-monolith-text-secondary leading-relaxed">
+          <p class="label mb-3">Акт первый</p>
+          <h3 class="font-display text-2xl mb-4" style="color:#1A1714;">Инженерный каркас</h3>
+          <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+          <p class="leading-relaxed" style="color:#6B6560;">
             Мы начинаем не с декора, а с ДНК вашего комфорта. Вы видите и утверждаете каждую инженерную трассу, каждый узел, каждый сценарий освещения. Никаких «мы так обычно делаем» — только ваш Инженерный Сценарий Жизни, перенесённый на план.
           </p>
         </div>
-        <div class="flex-1 bg-monolith-surface h-64 flex items-center justify-center text-monolith-text-muted text-sm">[3D-каркас]</div>
+        <div class="flex-1 flex items-center justify-center border border-celoe-border reveal delay-1"
+             style="height:240px;background:#FAF7F2;">
+          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">3D-каркас</p>
+        </div>
       </div>
 
-      <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
+      <div class="w-full h-px" style="background:#DDD8D0;"></div>
+
+      <div class="flex flex-col md:flex-row-reverse gap-12 items-center reveal">
         <div class="flex-1">
-          <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-3">Акт второй</p>
-          <h3 class="font-display text-2xl text-white mb-4">Тактильная карта</h3>
-          <p class="text-monolith-text-secondary leading-relaxed">
+          <p class="label mb-3">Акт второй</p>
+          <h3 class="font-display text-2xl mb-4" style="color:#1A1714;">Тактильная карта</h3>
+          <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+          <p class="leading-relaxed" style="color:#6B6560;">
             Вы не просто выбираете «светлый пол». Вы видите его фактуру, понимаете, как на него падает утренний свет, и знаете, каким он будет на ощупь. Мы резервируем конкретные артикулы материалов по складам — риск замены исключён.
           </p>
         </div>
-        <div class="flex-1 bg-monolith-surface h-64 flex items-center justify-center text-monolith-text-muted text-sm">[Текстуры]</div>
+        <div class="flex-1 flex items-center justify-center border border-celoe-border reveal delay-1"
+             style="height:240px;background:#FAF7F2;">
+          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Текстуры и материалы</p>
+        </div>
       </div>
 
-      <div class="flex flex-col md:flex-row gap-12 items-center">
+      <div class="w-full h-px" style="background:#DDD8D0;"></div>
+
+      <div class="flex flex-col md:flex-row gap-12 items-center reveal">
         <div class="flex-1">
-          <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-3">Акт третий</p>
-          <h3 class="font-display text-2xl text-white mb-4">Сценарий во времени</h3>
-          <p class="text-monolith-text-secondary leading-relaxed">
+          <p class="label mb-3">Акт третий</p>
+          <h3 class="font-display text-2xl mb-4" style="color:#1A1714;">Сценарий во времени</h3>
+          <div class="w-8 h-px mb-5" style="background:#C8A882;"></div>
+          <p class="leading-relaxed" style="color:#6B6560;">
             Рассвет, день, закат, ночь. Вы увидите, как ваше пространство живёт в течение суток. Где солнце утром? Не будет ли бликов на экране вечером? Достаточно ли света в коридоре ночью? Мы репетируем ваш день, чтобы реальность не принесла сюрпризов.
           </p>
         </div>
-        <div class="flex-1 bg-monolith-surface h-64 flex items-center justify-center text-monolith-text-muted text-sm">[Сутки за 30 секунд]</div>
+        <div class="flex-1 flex items-center justify-center border border-celoe-border reveal delay-1"
+             style="height:240px;background:#FAF7F2;">
+          <p class="text-xs tracking-widest uppercase" style="color:#B8B2A8;">Сутки за 30 секунд</p>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <section class="py-24 px-6 bg-monolith-surface">
+  <!-- Итог -->
+  <section class="py-24 px-6" style="background:#EDE8DF;">
     <div class="max-w-2xl mx-auto text-center">
-      <p class="text-monolith-text-muted text-xs tracking-widest uppercase mb-4">Итог</p>
-      <h2 class="heading-lg mb-6">Финальная смета. Без права на изменение.</h2>
-      <p class="text-monolith-text-secondary leading-relaxed mb-8">
+      <p class="label mb-4 reveal">Итог репетиции</p>
+      <h2 class="heading-lg mb-5 reveal delay-1" style="color:#1A1714;">
+        Финальная смета.<br/>Без права на изменение.
+      </h2>
+      <div class="w-10 h-px mx-auto mb-8 reveal-line delay-2" style="background:#C8A882;"></div>
+      <p class="leading-relaxed mb-10 reveal delay-2" style="color:#6B6560;">
         После утверждения каждого узла и каждой текстуры система генерирует смету, в которой учтено всё. С этого момента цена фиксируется. Риск удорожания материалов — на нас.
       </p>
-      <button class="btn-monolith">
-        Начать Цифровую репетицию
-      </button>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center reveal delay-3">
+        <a href="/contacts" class="btn-primary">Начать Цифровую репетицию</a>
+        <a href="/transparent-perimeter" class="btn-secondary">
+          Следующий шаг: Периметр →
+        </a>
+      </div>
     </div>
   </section>
+
 </MainLayout>
