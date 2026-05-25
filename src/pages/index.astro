@@ -6,64 +6,173 @@ import AiConsultant from '../components/AiConsultant.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Calculator from '../components/Calculator.astro';
 ---
-
+ 
 <MainLayout>
-  <section style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 1.5rem;position:relative;">
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,15,0.8),rgba(10,10,15,0.6),rgba(10,10,15,0.9));z-index:0;"></div>
-    <div style="position:relative;z-index:10;">
-      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);color:#D0D0D8;margin-bottom:1.5rem;line-height:1.1;">
+ 
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+ 
+    <!-- Фоновое фото. Положи файл в: public/images/hero.jpg
+         Пока фото нет — виден только градиент ниже.          -->
+    <img
+      src="/images/hero.jpg"
+      alt="Интерьер ЦЕЛОЕ"
+      class="absolute inset-0 w-full h-full object-cover"
+      onerror="this.style.display='none'"
+    />
+ 
+    <!-- Затемняющий градиент поверх фото -->
+    <div class="absolute inset-0 bg-gradient-to-b from-monolith-bg/85 via-monolith-bg/60 to-monolith-bg/95 z-10"></div>
+ 
+    <!-- Контент -->
+    <div class="relative z-20 max-w-3xl">
+ 
+      <!-- Дескриптор — чтобы сразу было понятно чем занимается компания -->
+      <p class="text-monolith-text-muted text-xs tracking-[0.25em] uppercase mb-10 hero-line">
+        Ремонт квартир под ключ · Москва
+      </p>
+ 
+      <h1 class="font-display font-normal leading-tight text-monolith-text-primary mb-6 hero-line"
+          style="font-size: clamp(2rem, 5vw, 4rem);">
         Пространство, с которого<br />начинается новая глава
       </h1>
-      <div style="width:40px;height:1px;background:#4A4A5E;margin:1.5rem auto;"></div>
-      <p style="color:#8888A0;font-size:1.1rem;max-width:500px;margin:0 auto 2.5rem;">
+ 
+      <div class="w-10 h-px bg-monolith-border mx-auto my-6 hero-line"></div>
+ 
+      <p class="text-monolith-text-secondary text-lg max-w-md mx-auto mb-12 hero-line">
         ЦЕЛОЕ. Архитектура жизни. Цельный ремонт.
       </p>
-      <a href="/zero-day" class="btn">Начать погружение</a>
+ 
+      <!-- CTA: основной + телефон -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center hero-line">
+        <a href="/zero-day" class="btn-monolith">Начать погружение</a>
+        <a href="tel:+79615192400" class="btn-phone">
+          <svg class="w-4 h-4 mr-2 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          +7 (961) 519-24-00
+        </a>
+      </div>
+    </div>
+ 
+    <!-- Индикатор скролла -->
+    <div id="scroll-indicator" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 transition-opacity duration-500">
+      <span class="text-monolith-text-muted text-[10px] tracking-[0.25em] uppercase">Листайте</span>
+      <div class="w-px h-10 bg-gradient-to-b from-monolith-border to-transparent"></div>
     </div>
   </section>
+ 
+  <!-- ─── СТАТИСТИКА / ДОВЕРИЕ ─────────────────────────────── -->
+  <!-- ⚠️  Замени цифры на реальные! -->
+  <section class="py-20 px-6 border-y border-monolith-border">
+    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      <div class="stat-item">
+        <p class="font-display text-5xl text-monolith-accent-warm mb-2 stat-number" data-value="87">0</p>
+        <p class="text-monolith-text-muted text-[10px] tracking-[0.2em] uppercase leading-relaxed">Завершённых<br/>объектов</p>
+      </div>
+      <div class="stat-item">
+        <p class="font-display text-5xl text-monolith-accent-warm mb-2 stat-number" data-value="6">0</p>
+        <p class="text-monolith-text-muted text-[10px] tracking-[0.2em] uppercase leading-relaxed">Лет<br/>на рынке</p>
+      </div>
+      <div class="stat-item">
+        <p class="font-display text-5xl text-monolith-accent-warm mb-2">0</p>
+        <p class="text-monolith-text-muted text-[10px] tracking-[0.2em] uppercase leading-relaxed">Просроченных<br/>сдач</p>
+      </div>
+      <div class="stat-item">
+        <p class="font-display text-5xl text-monolith-accent-warm mb-2">= </p>
+        <p class="text-monolith-text-muted text-[10px] tracking-[0.2em] uppercase leading-relaxed">Смета не<br/>меняется</p>
+      </div>
+    </div>
+  </section>
+ 
   <Manifesto />
   <Vectors />
   <AiConsultant />
   <Portfolio />
   <Calculator />
+ 
   <script>
-  const blocks = document.querySelectorAll('.manifesto-block, .vector-card');
-  let scrollTimeout;
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          entry.target.style.setProperty('opacity', '1', 'important');
-          entry.target.style.setProperty('transform', 'translateY(0)', 'important');
-        }, 600);
-      }
+    // ─── Анимация появления блоков ───────────────────────────
+    const blocks = document.querySelectorAll('.manifesto-block, .vector-card');
+ 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.setProperty('opacity', '1', 'important');
+            entry.target.style.setProperty('transform', 'translateY(0)', 'important');
+          }, 600);
+        }
+      });
+    }, { threshold: 0.2 });
+ 
+    blocks.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(60px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
     });
-  }, { threshold: 0.2 });
-  
-  blocks.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(60px)';
-    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    observer.observe(el);
-  });
-</script>
+ 
+    // ─── Скрываем индикатор скролла ──────────────────────────
+    const indicator = document.getElementById('scroll-indicator');
+    window.addEventListener('scroll', () => {
+      if (indicator) {
+        indicator.style.opacity = window.scrollY > 80 ? '0' : '1';
+      }
+    }, { passive: true });
+ 
+    // ─── Счётчики статистики ─────────────────────────────────
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.value);
+          let current = 0;
+          const step = Math.ceil(target / 40);
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = current;
+            if (current >= target) clearInterval(timer);
+          }, 40);
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+ 
+    document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+ 
+    // ─── Плавное появление hero ──────────────────────────────
+    document.querySelectorAll('.hero-line').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = `opacity 0.8s ease ${i * 0.15}s, transform 0.8s ease ${i * 0.15}s`;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      });
+    });
+  </script>
 </MainLayout>
-
+ 
 <style>
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 14px 32px; border: 1px solid #4A4A5E; color: #E8E8F0;
-    font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: none; transition: all 0.8s; position: relative;
-    overflow: hidden; z-index: 1;
+  /* Кнопка телефона — вторичная, без заливки */
+  .btn-phone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border: 1px solid #4A4A5E;
+    color: #8888A0;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: border-color 0.4s, color 0.4s;
   }
-  .btn::before {
-    content: ''; position: absolute; inset: 0; background: #C8A882;
-    transform: scaleX(0); transform-origin: left; transition: transform 0.8s;
-    z-index: -1;
+  .btn-phone:hover {
+    border-color: #C8A882;
+    color: #C8A882;
   }
-  .btn:hover { border-color: #C8A882; color: #0A0A0F; }
-  .btn:hover::before { transform: scaleX(1); }
 </style>
