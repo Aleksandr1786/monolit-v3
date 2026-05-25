@@ -15,30 +15,30 @@
     </div>
 
     <!-- Калькулятор -->
-    <div class="reveal delay-1 border border-celoe-border p-8 md:p-10" style="background:#FAF7F2;">
+    <div class="reveal delay-1 border border-celoe-border p-6 md:p-10" style="background:#FAF7F2;">
 
-      <!-- Тип квартиры -->
+      <!-- Тип квартиры — 2x2 на мобильном, 4 в ряд на десктопе -->
       <div class="mb-8">
         <label class="block text-xs tracking-[0.2em] uppercase mb-4" style="color:#A39E99;">
           Тип квартиры
         </label>
-        <div class="grid grid-cols-4 gap-2">
-          <button class="type-btn px-3 py-3 border text-xs uppercase tracking-wider transition-all duration-300 active"
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <button class="type-btn py-3 px-2 border text-xs uppercase tracking-wide transition-all duration-300 active"
                   data-type="studio"
                   style="border-color:#C8A882;color:#1A1714;background:#F5F0E8;">
             Студия
           </button>
-          <button class="type-btn px-3 py-3 border text-xs uppercase tracking-wider transition-all duration-300"
+          <button class="type-btn py-3 px-2 border text-xs uppercase tracking-wide transition-all duration-300"
                   data-type="1room"
                   style="border-color:#DDD8D0;color:#6B6560;background:transparent;">
             1-комн.
           </button>
-          <button class="type-btn px-3 py-3 border text-xs uppercase tracking-wider transition-all duration-300"
+          <button class="type-btn py-3 px-2 border text-xs uppercase tracking-wide transition-all duration-300"
                   data-type="2room"
                   style="border-color:#DDD8D0;color:#6B6560;background:transparent;">
             2-комн.
           </button>
-          <button class="type-btn px-3 py-3 border text-xs uppercase tracking-wider transition-all duration-300"
+          <button class="type-btn py-3 px-2 border text-xs uppercase tracking-wide transition-all duration-300"
                   data-type="3room"
                   style="border-color:#DDD8D0;color:#6B6560;background:transparent;">
             3-комн.
@@ -51,46 +51,63 @@
         <label class="block text-xs tracking-[0.2em] uppercase mb-4" style="color:#A39E99;">
           Площадь: <span id="area-value" style="color:#1A1714;font-weight:500;">40</span> м²
         </label>
-        <div class="relative">
-          <input id="area-slider" type="range" min="25" max="120" value="40"
-                 class="w-full" style="accent-color:#C8A882;" />
-        </div>
+        <input id="area-slider" type="range" min="25" max="120" value="40"
+               class="w-full" style="accent-color:#C8A882;" />
         <div class="flex justify-between mt-2">
           <span class="text-xs" style="color:#A39E99;">25 м²</span>
           <span class="text-xs" style="color:#A39E99;">120 м²</span>
         </div>
       </div>
 
-      <!-- Пакеты -->
+      <!-- Пакеты с расшифровкой -->
       <div class="mb-8">
         <label class="block text-xs tracking-[0.2em] uppercase mb-4" style="color:#A39E99;">
           Пакет работ
         </label>
-        <div class="grid grid-cols-3 gap-2">
-          <button class="pack-btn flex flex-col items-center gap-1 px-3 py-4 border text-center transition-all duration-300"
+        <div class="flex flex-col gap-2">
+
+          <button class="pack-btn text-left border transition-all duration-300 p-4"
                   data-pack="base"
-                  style="border-color:#DDD8D0;color:#6B6560;background:transparent;">
-            <span class="text-xs uppercase tracking-wider">Основа</span>
-            <span class="text-[10px]" style="color:#A39E99;">от 6 000 ₽/м²</span>
+                  style="border-color:#DDD8D0;background:transparent;">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-medium uppercase tracking-wide" style="color:#6B6560;">Основа</span>
+              <span class="text-xs" style="color:#A39E99;">от 6 000 ₽/м²</span>
+            </div>
+            <p class="text-xs leading-relaxed" style="color:#A39E99;">
+              Чистовая отделка стен, потолков и полов. Электрика и сантехника по готовым трассам. Без дизайн-проекта.
+            </p>
           </button>
-          <button class="pack-btn flex flex-col items-center gap-1 px-3 py-4 border text-center transition-all duration-300 active"
+
+          <button class="pack-btn text-left border transition-all duration-300 p-4 active"
                   data-pack="full"
-                  style="border-color:#C8A882;color:#1A1714;background:#F5F0E8;">
-            <span class="text-xs uppercase tracking-wider">Целое</span>
-            <span class="text-[10px]" style="color:#C8A882;">от 9 500 ₽/м²</span>
+                  style="border-color:#C8A882;background:#F5F0E8;">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-medium uppercase tracking-wide" style="color:#1A1714;">Целое</span>
+              <span class="text-xs" style="color:#C8A882;">от 9 500 ₽/м²</span>
+            </div>
+            <p class="text-xs leading-relaxed" style="color:#6B6560;">
+              Всё что в «Основе» + Нулевой День, 3D-визуализация, фиксированная смета, ежедневные отчёты, клининг после сдачи.
+            </p>
           </button>
-          <button class="pack-btn flex flex-col items-center gap-1 px-3 py-4 border text-center transition-all duration-300"
+
+          <button class="pack-btn text-left border transition-all duration-300 p-4"
                   data-pack="arch"
-                  style="border-color:#DDD8D0;color:#6B6560;background:transparent;">
-            <span class="text-xs uppercase tracking-wider">Архитект.</span>
-            <span class="text-[10px]" style="color:#A39E99;">от 16 000 ₽/м²</span>
+                  style="border-color:#DDD8D0;background:transparent;">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-medium uppercase tracking-wide" style="color:#6B6560;">Архитектура</span>
+              <span class="text-xs" style="color:#A39E99;">от 16 000 ₽/м²</span>
+            </div>
+            <p class="text-xs leading-relaxed" style="color:#A39E99;">
+              Всё что в «Целое» + авторский дизайн-проект, подбор и закупка материалов, видеонаблюдение, цифровой паспорт квартиры.
+            </p>
           </button>
+
         </div>
       </div>
 
       <!-- Результат -->
       <div class="border-t border-celoe-border pt-6 mb-6">
-        <div class="flex items-end justify-between">
+        <div class="flex items-end justify-between gap-4">
           <div>
             <p class="text-xs tracking-[0.2em] uppercase mb-2" style="color:#A39E99;">
               Ориентировочная стоимость
@@ -99,19 +116,18 @@
               380 000 ₽
             </p>
           </div>
-          <p class="text-xs text-right max-w-32" style="color:#A39E99;line-height:1.5;">
+          <p class="text-xs text-right" style="color:#A39E99;line-height:1.6;max-width:120px;">
             Точная цена<br/>фиксируется<br/>на встрече
           </p>
         </div>
       </div>
 
-      <a href="/zero-day" class="btn-primary w-full no-underline">
+      <a href="/zero-day" class="btn-primary w-full no-underline text-center">
         Запланировать Нулевой День
       </a>
 
     </div>
 
-    <!-- Подпись -->
     <p class="text-center text-xs mt-6 reveal delay-2" style="color:#B8B2A8;letter-spacing:0.05em;">
       Нулевой День — бесплатный выезд, замер и фиксация сметы
     </p>
@@ -126,9 +142,7 @@
   const typeBtns  = document.querySelectorAll('.type-btn');
   const packBtns  = document.querySelectorAll('.pack-btn');
 
-  // Базовые цены по типу (₽/м²)
   const typePrices = { studio: 0, '1room': 500, '2room': 1000, '3room': 1500 };
-  // Базовые цены по пакету (₽/м²)
   const packPrices = { base: 6000, full: 9500, arch: 16000 };
 
   let currentType = 'studio';
@@ -141,29 +155,49 @@
     priceEl.textContent   = price.toLocaleString('ru-RU') + ' ₽';
   }
 
-  function activateBtn(btns, clicked) {
-    btns.forEach(b => {
+  function activateTypeBtn(clicked) {
+    typeBtns.forEach(b => {
       b.style.borderColor = '#DDD8D0';
       b.style.color       = '#6B6560';
       b.style.background  = 'transparent';
-      b.classList.remove('active');
     });
     clicked.style.borderColor = '#C8A882';
     clicked.style.color       = '#1A1714';
     clicked.style.background  = '#F5F0E8';
-    clicked.classList.add('active');
+  }
+
+  function activatePackBtn(clicked) {
+    packBtns.forEach(b => {
+      b.style.borderColor = '#DDD8D0';
+      b.style.background  = 'transparent';
+      // Текст названия пакета
+      const title = b.querySelector('span:first-child');
+      const price = b.querySelector('span:last-child');
+      const desc  = b.querySelector('p');
+      if (title) title.style.color = '#6B6560';
+      if (price) price.style.color = '#A39E99';
+      if (desc)  desc.style.color  = '#A39E99';
+    });
+    clicked.style.borderColor = '#C8A882';
+    clicked.style.background  = '#F5F0E8';
+    const title = clicked.querySelector('span:first-child');
+    const price = clicked.querySelector('span:last-child');
+    const desc  = clicked.querySelector('p');
+    if (title) title.style.color = '#1A1714';
+    if (price) price.style.color = '#C8A882';
+    if (desc)  desc.style.color  = '#6B6560';
   }
 
   slider.addEventListener('input', updatePrice);
 
   typeBtns.forEach(btn => btn.addEventListener('click', () => {
-    activateBtn(typeBtns, btn);
+    activateTypeBtn(btn);
     currentType = btn.dataset.type;
     updatePrice();
   }));
 
   packBtns.forEach(btn => btn.addEventListener('click', () => {
-    activateBtn(packBtns, btn);
+    activatePackBtn(btn);
     currentPack = btn.dataset.pack;
     updatePrice();
   }));
