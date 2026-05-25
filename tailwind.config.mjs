@@ -64,3 +64,34 @@ export default {
         fadeIn: {
           from: { opacity: '0' },
           to:   { opacity: '1' },
+        },
+        lineGrow: {
+          from: { transform: 'scaleX(0)' },
+          to:   { transform: 'scaleX(1)' },
+        },
+        shimmer: {
+          '0%, 100%': { opacity: '0.55' },
+          '50%':      { opacity: '1' },
+        },
+        heroEnter: {
+          from: { opacity: '0', transform: 'translateY(24px)' },
+          to:   { opacity: '1', transform: 'translateY(0)' },
+        },
+        scrollHint: {
+          '0%, 100%': { opacity: '0.3', transform: 'translateY(0)' },
+          '50%':      { opacity: '1',   transform: 'translateY(6px)' },
+        },
+      },
+
+      transitionTimingFunction: {
+        spring: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      },
+
+      backdropBlur: {
+        xs: '4px',
+        sm: '8px',
+      },
+    },
+  },
+  plugins: [],
+}
