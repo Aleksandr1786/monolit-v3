@@ -1,80 +1,140 @@
 ---
 ---
 
-<div class="max-w-2xl mx-auto text-center px-6 pb-32">
-  <p class="text-monolith-text-muted text-sm tracking-widest uppercase mb-6">Не знаете, что выбрать?</p>
-  <button id="ai-trigger" class="btn-monolith">
-    Спросить Архитектора
-  </button>
-</div>
+<section class="py-24 px-6" style="background:#F5F0E8;">
+  <div class="max-w-2xl mx-auto text-center reveal">
+    <p class="label mb-4">Не знаете, что выбрать?</p>
+    <h2 class="heading-md mb-3" style="color:#1A1714;">Спросите Архитектора Целого</h2>
+    <p class="text-sm mb-8" style="color:#A39E99;">
+      AI-консультант поможет найти ваш стиль за 2 минуты
+    </p>
+    <button id="ai-trigger" class="btn-primary">
+      Начать диалог
+    </button>
+  </div>
+</section>
 
-<div id="ai-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-500">
-  <div class="bg-monolith-surface border border-monolith-border w-full max-w-lg mx-4 p-8">
-    <div class="flex justify-between items-center mb-6">
-      <h3 class="font-display text-xl text-white">Архитектор Целого</h3>
-      <button id="ai-close" class="text-monolith-text-muted hover:text-white text-2xl leading-none">&times;</button>
+<!-- Модальное окно -->
+<div id="ai-modal"
+     class="fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-400"
+     style="background:rgba(26,23,20,0.7);opacity:0;pointer-events:none;backdrop-filter:blur(4px);">
+
+  <div class="w-full max-w-lg mx-4 border border-celoe-border"
+       style="background:#FAF7F2;transform:translateY(16px);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);"
+       id="ai-modal-inner">
+
+    <!-- Шапка модала -->
+    <div class="flex justify-between items-center px-8 py-5 border-b border-celoe-border">
+      <div>
+        <p class="font-display text-lg" style="color:#1A1714;">Архитектор Целого</p>
+        <p class="text-[10px] tracking-widest uppercase mt-0.5" style="color:#A39E99;">AI-консультант</p>
+      </div>
+      <button id="ai-close"
+              class="w-8 h-8 flex items-center justify-center border border-celoe-border transition-colors duration-300 hover:border-celoe-border-strong"
+              style="color:#A39E99;font-size:18px;line-height:1;">
+        ×
+      </button>
     </div>
-    <div id="ai-chat" class="h-64 overflow-y-auto mb-6 space-y-4 text-sm">
-      <p class="text-monolith-text-secondary">Представь свой идеальный дом. Не мебель и не цвет стен. Что ты чувствуешь, когда входишь в дверь? Опиши одним словом.</p>
+
+    <!-- Чат -->
+    <div id="ai-chat" class="px-8 py-6 h-64 overflow-y-auto space-y-4 text-sm">
+      <div class="flex gap-3">
+        <div class="w-6 h-6 shrink-0 border border-celoe-border flex items-center justify-center mt-0.5"
+             style="color:#C8A882;font-size:10px;">AI</div>
+        <p style="color:#6B6560;line-height:1.65;">
+          Представь свой идеальный дом. Не мебель и не цвет стен. Что ты чувствуешь, когда входишь в дверь? Опиши одним словом.
+        </p>
+      </div>
     </div>
-    <div class="flex gap-3">
-      <input id="ai-input" type="text" placeholder="Например: покой, сила, тепло..." class="flex-1 bg-transparent border border-monolith-border px-4 py-3 text-white text-sm focus:outline-none focus:border-monolith-accent-warm transition-colors" />
-      <button id="ai-send" class="btn-monolith px-6">→</button>
+
+    <!-- Ввод -->
+    <div class="px-8 pb-8">
+      <div class="flex gap-3 border-t border-celoe-border pt-5">
+        <input id="ai-input" type="text"
+               placeholder="Например: покой, сила, тепло..."
+               class="flex-1 bg-transparent border border-celoe-border px-4 py-3 text-sm focus:outline-none transition-colors duration-300"
+               style="color:#1A1714;" />
+        <button id="ai-send"
+                class="btn-primary px-5 shrink-0"
+                style="padding-top:10px;padding-bottom:10px;">
+          →
+        </button>
+      </div>
     </div>
+
   </div>
 </div>
 
 <script>
-  const trigger = document.getElementById('ai-trigger');
-  const modal = document.getElementById('ai-modal');
-  const close = document.getElementById('ai-close');
-  const input = document.getElementById('ai-input');
-  const send = document.getElementById('ai-send');
-  const chat = document.getElementById('ai-chat');
+  const trigger   = document.getElementById('ai-trigger');
+  const modal     = document.getElementById('ai-modal');
+  const modalInner = document.getElementById('ai-modal-inner');
+  const closeBtn  = document.getElementById('ai-close');
+  const input     = document.getElementById('ai-input');
+  const sendBtn   = document.getElementById('ai-send');
+  const chat      = document.getElementById('ai-chat');
 
-  trigger.addEventListener('click', () => {
-    modal.classList.remove('opacity-0', 'pointer-events-none');
-    modal.classList.add('opacity-100');
-  });
+  function openModal() {
+    modal.style.opacity = '1';
+    modal.style.pointerEvents = 'auto';
+    modalInner.style.transform = 'translateY(0)';
+    setTimeout(() => input.focus(), 400);
+  }
+  function closeModal() {
+    modal.style.opacity = '0';
+    modal.style.pointerEvents = 'none';
+    modalInner.style.transform = 'translateY(16px)';
+  }
 
-  close.addEventListener('click', () => {
-    modal.classList.add('opacity-0', 'pointer-events-none');
-    modal.classList.remove('opacity-100');
-  });
+  trigger.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
   const responses = {
-    'тишина': 'Тишина — это визуальный покой. Мягкий свет, тепло дерева, воздух. Это твой вектор: <span class="text-white">Тишина и воздух</span>.',
-    'покой': 'Покой — это когда ничто не отвлекает. Светлые тона, натуральные фактуры. Твой вектор: <span class="text-white">Тишина и воздух</span>.',
-    'сила': 'Сила — это честность материалов. Открытый бетон, сталь. Твой вектор: <span class="text-white">Честная фактура</span>.',
-    'брутальность': 'Брутальность — это эстетика правды. Никаких украшений, только суть. Твой вектор: <span class="text-white">Честная фактура</span>.',
-    'уверенность': 'Уверенность — это баланс пропорций. Классика, неподвластная времени. Твой вектор: <span class="text-white">Эхо классики</span>.',
-    'вечность': 'Вечность — это то, что не устаревает. Элегантные линии, благородные материалы. Твой вектор: <span class="text-white">Эхо классики</span>.',
-    'тепло': 'Тепло — это тактильный комфорт. Натуральное дерево, мягкий свет. Твой вектор: <span class="text-white">Тишина и воздух</span>.',
+    'тишина':      'Тишина — это визуальный покой. Мягкий свет, тепло дерева, воздух между предметами. Твой вектор: <strong style="color:#1A1714;">Тишина и воздух</strong>.',
+    'покой':       'Покой — это когда ничто не отвлекает. Светлые тона, натуральные фактуры. Твой вектор: <strong style="color:#1A1714;">Тишина и воздух</strong>.',
+    'тепло':       'Тепло — это тактильный комфорт. Натуральное дерево, мягкий свет, живые материалы. Твой вектор: <strong style="color:#1A1714;">Тишина и воздух</strong>.',
+    'сила':        'Сила — это честность материалов. Открытый бетон, сталь, правда без прикрас. Твой вектор: <strong style="color:#1A1714;">Честная фактура</strong>.',
+    'брутальность':'Брутальность — это эстетика правды. Никаких украшений, только суть. Твой вектор: <strong style="color:#1A1714;">Честная фактура</strong>.',
+    'уверенность': 'Уверенность — это баланс пропорций. Классика, неподвластная времени. Твой вектор: <strong style="color:#1A1714;">Эхо классики</strong>.',
+    'вечность':    'Вечность — это то, что не устаревает. Элегантные линии, благородные материалы. Твой вектор: <strong style="color:#1A1714;">Эхо классики</strong>.',
+    'элегантность':'Элегантность — это когда всё на своём месте. Детали, пропорции, свет. Твой вектор: <strong style="color:#1A1714;">Эхо классики</strong>.',
   };
 
   function getResponse(word) {
     const key = word.toLowerCase().trim();
     if (responses[key]) return responses[key];
-    return 'Интересный образ. Дай мне ещё одну подсказку — какое чувство ближе: покой, сила или уверенность?';
+    return 'Интересный образ. Попробуй уточнить: что тебе ближе — <strong>покой</strong>, <strong>сила</strong> или <strong>уверенность</strong>?';
   }
 
   function addMessage(text, isUser = false) {
-    const msg = document.createElement('p');
-    msg.className = isUser ? 'text-monolith-accent-warm text-right' : 'text-monolith-text-secondary';
-    msg.innerHTML = text;
-    chat.appendChild(msg);
+    const wrap = document.createElement('div');
+    wrap.className = 'flex gap-3' + (isUser ? ' justify-end' : '');
+
+    if (!isUser) {
+      wrap.innerHTML = `
+        <div class="w-6 h-6 shrink-0 border border-celoe-border flex items-center justify-center mt-0.5"
+             style="color:#C8A882;font-size:10px;min-width:24px;">AI</div>
+        <p style="color:#6B6560;line-height:1.65;">${text}</p>`;
+    } else {
+      wrap.innerHTML = `
+        <p class="text-right" style="color:#C8A882;line-height:1.65;">${text}</p>`;
+    }
+
+    chat.appendChild(wrap);
     chat.scrollTop = chat.scrollHeight;
   }
 
-  send.addEventListener('click', () => {
+  sendBtn.addEventListener('click', () => {
     const text = input.value.trim();
     if (!text) return;
     addMessage(text, true);
     input.value = '';
-    setTimeout(() => addMessage(getResponse(text)), 600);
+    input.style.borderColor = '#DDD8D0';
+    setTimeout(() => addMessage(getResponse(text)), 550);
   });
 
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') send.click();
-  });
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendBtn.click(); });
+  input.addEventListener('focus',   () => { input.style.borderColor = '#C8A882'; });
+  input.addEventListener('blur',    () => { input.style.borderColor = '#DDD8D0'; });
 </script>
