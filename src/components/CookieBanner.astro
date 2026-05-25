@@ -1,0 +1,91 @@
+---
+---
+
+<!-- Cookie Banner -->
+<div id="cookie-banner"
+     class="fixed bottom-0 left-0 right-0 z-50 transition-all duration-500"
+     style="transform:translateY(100%);opacity:0;">
+
+  <div class="border-t border-celoe-border px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+       style="background:rgba(245,240,232,0.97);backdrop-filter:blur(12px);">
+
+    <!-- Текст -->
+    <div class="flex items-start gap-4 flex-1">
+      <div class="w-px h-10 shrink-0 mt-0.5" style="background:#C8A882;"></div>
+      <p class="text-xs leading-relaxed" style="color:#6B6560;max-width:600px;">
+        Мы используем cookies для аналитики посещаемости (Яндекс Метрика) и улучшения работы сайта.
+        Продолжая использовать сайт, вы соглашаетесь с нашей
+        <a href="/privacy" class="no-underline border-b transition-colors duration-300"
+           style="color:#C8A882;border-color:#C8A882;">политикой конфиденциальности</a>.
+      </p>
+    </div>
+
+    <!-- Кнопки -->
+    <div class="flex items-center gap-3 shrink-0">
+      <button id="cookie-decline"
+              class="text-xs uppercase tracking-widest transition-colors duration-300 px-4 py-2 border border-celoe-border"
+              style="color:#A39E99;background:transparent;">
+        Отклонить
+      </button>
+      <button id="cookie-accept"
+              class="text-xs uppercase tracking-widest transition-all duration-300 px-5 py-2 border relative overflow-hidden"
+              style="border-color:#2A2620;background:#2A2620;color:#FAF7F2;">
+        Принять
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const banner   = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+
+  // Показываем если ещё не было ответа
+  if (!localStorage.getItem('cookie-consent')) {
+    setTimeout(() => {
+      banner.style.transform = 'translateY(0)';
+      banner.style.opacity   = '1';
+    }, 1500);
+  }
+
+  function hideBanner() {
+    banner.style.transform = 'translateY(100%)';
+    banner.style.opacity   = '0';
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'accepted');
+    hideBanner();
+  });
+
+  declineBtn.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'declined');
+    hideBanner();
+    // Отключаем Яндекс Метрику если отклонил
+    window['ym'] && ym(109412473, 'params', { optout: true });
+  });
+
+  // Hover на кнопке Принять
+  acceptBtn.addEventListener('mouseenter', () => {
+    acceptBtn.style.background    = '#C8A882';
+    acceptBtn.style.borderColor   = '#C8A882';
+    acceptBtn.style.color         = '#1A1714';
+  });
+  acceptBtn.addEventListener('mouseleave', () => {
+    acceptBtn.style.background    = '#2A2620';
+    acceptBtn.style.borderColor   = '#2A2620';
+    acceptBtn.style.color         = '#FAF7F2';
+  });
+
+  // Hover на кнопке Отклонить
+  declineBtn.addEventListener('mouseenter', () => {
+    declineBtn.style.borderColor = '#B8B2A8';
+    declineBtn.style.color       = '#6B6560';
+  });
+  declineBtn.addEventListener('mouseleave', () => {
+    declineBtn.style.borderColor = '#DDD8D0';
+    declineBtn.style.color       = '#A39E99';
+  });
+</script>
