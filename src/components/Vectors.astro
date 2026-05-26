@@ -4,7 +4,7 @@
 <section class="py-32 px-6" style="background:#F5F0E8;">
   <div class="max-w-6xl mx-auto">
 
-    <!-- Заголовок секции -->
+    <!-- Заголовок -->
     <div class="text-center mb-16 reveal">
       <p class="label mb-4">Найдите свой стиль</p>
       <h2 class="heading-lg" style="color:#1A1714;">Три вектора вашего пространства</h2>
@@ -15,223 +15,92 @@
     </div>
 
     <!-- Карточки -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <!-- I — Эхо классики -->
-      <div class="vector-card vector-animate group relative overflow-hidden cursor-pointer"
-           style="height:420px;background:#12121A;" data-delay="0">
+      <a href="/portfolio" class="vector-card vector-animate group relative overflow-hidden block no-underline"
+         style="height:360px;background:#12121A;" data-delay="0">
 
-        <!-- Фото (положи: public/images/vector-classic.jpg) -->
-        <img src="/images/vector-classic.jpg"
-             alt="Эхо классики — классический интерьер"
-             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-             style="opacity:0.6;"
-             onerror="this.style.display='none'" />
-
-        <!-- Градиент снизу -->
-        <div class="absolute inset-0 z-10"
-             style="background:linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.3) 50%, transparent 100%);"></div>
-
-        <!-- Римская цифра — фоновый элемент -->
-        <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="roman-numeral font-display"
-                style="font-size:9rem;color:#2A2620;opacity:0.25;line-height:1;user-select:none;">I</span>
+        <!-- Фото -->
+        <div class="parallax-layer absolute inset-0"
+             style="will-change:transform;transition:transform 0.15s ease-out;">
+          <img src="/images/vector-classic.jpg"
+               alt="Эхо классики"
+               class="absolute inset-0 w-full h-full object-cover"
+               style="opacity:0.7;transform:scale(1.1);transition:opacity 0.5s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1);"
+               onerror="this.style.display='none'" />
         </div>
+
+        <!-- Градиент -->
+        <div class="absolute inset-0 z-10 transition-opacity duration-500"
+             style="background:linear-gradient(to top, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.3) 50%, transparent 100%);"
+             data-gradient></div>
 
         <!-- Контент -->
-        <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
-          <p class="text-[10px] tracking-[0.25em] uppercase mb-3" style="color:#4A4A5E;">Вектор I</p>
-          <h3 class="font-display text-2xl text-white mb-3">Эхо классики</h3>
-          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:12px;"></div>
-          <p class="text-sm leading-relaxed transition-all duration-500 max-h-0 overflow-hidden group-hover:max-h-20"
-             style="color:#8888A0;">
+        <div class="absolute bottom-0 left-0 right-0 p-7 z-20">
+          <p class="text-[10px] tracking-[0.25em] uppercase mb-2 transition-colors duration-300"
+             style="color:#4A4A5E;">Вектор I</p>
+          <h3 class="font-display text-2xl text-white mb-2">Эхо классики</h3>
+          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:10px;"></div>
+          <p class="text-sm leading-relaxed" style="color:#8888A0;opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease, max-height 0.4s ease;" data-desc>
             Элегантность вне времени. Баланс пропорций и света.
           </p>
         </div>
-      </div>
+      </a>
 
       <!-- II — Честная фактура -->
-      <div class="vector-card vector-animate group relative overflow-hidden cursor-pointer"
-           style="height:420px;background:#0F0F14;" data-delay="180">
+      <a href="/portfolio" class="vector-card vector-animate group relative overflow-hidden block no-underline"
+         style="height:360px;background:#0F0F14;" data-delay="180">
 
-        <img src="/images/vector-loft.jpg"
-             alt="Честная фактура — лофт интерьер"
-             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-             style="opacity:0.6;"
-             onerror="this.style.display='none'" />
-
-        <div class="absolute inset-0 z-10"
-             style="background:linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.3) 50%, transparent 100%);"></div>
-
-        <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="roman-numeral font-display"
-                style="font-size:9rem;color:#2A2620;opacity:0.25;line-height:1;user-select:none;">II</span>
-        </div>
-
-        <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
-          <p class="text-[10px] tracking-[0.25em] uppercase mb-3" style="color:#4A4A5E;">Вектор II</p>
-          <h3 class="font-display text-2xl text-white mb-3">Честная фактура</h3>
-          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:12px;"></div>
-          <p class="text-sm leading-relaxed transition-all duration-500 max-h-0 overflow-hidden group-hover:max-h-20"
-             style="color:#8888A0;">
-            Брутальная эстетика. Открытые текстуры и сталь.
-          </p>
-        </div>
-      </div>
-
-      <!-- III — Тишина и воздух -->
-      <div class="vector-card vector-animate group relative overflow-hidden cursor-pointer"
-           style="height:420px;background:#111118;" data-delay="360">
-
-        <img src="/images/vector-zen.jpg"
-             alt="Тишина и воздух — минималистичный интерьер"
-             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-             style="opacity:0.6;"
-             onerror="this.style.display='none'" />
-
-        <div class="absolute inset-0 z-10"
-             style="background:linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.3) 50%, transparent 100%);"></div>
-
-        <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="roman-numeral font-display"
-                style="font-size:9rem;color:#2A2620;opacity:0.25;line-height:1;user-select:none;">III</span>
-        </div>
-
-        <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
-          <p class="text-[10px] tracking-[0.25em] uppercase mb-3" style="color:#4A4A5E;">Вектор III</p>
-          <h3 class="font-display text-2xl text-white mb-3">Тишина и воздух</h3>
-          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:12px;"></div>
-          <p class="text-sm leading-relaxed transition-all duration-500 max-h-0 overflow-hidden group-hover:max-h-20"
-             style="color:#8888A0;">
-            Максимум света. Натуральные материалы и покой.
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Подпись под карточками -->
-    <p class="text-center mt-10 text-xs reveal delay-3" style="color:#B8B2A8;letter-spacing:0.1em;">
-      Не знаете какой стиль ближе? — Спросите нашего AI-консультанта ниже
-    </p>
-
-  </div>
-</section>
-
----
----
-
-<section class="py-32 px-6" style="background:#F5F0E8;">
-  <div class="max-w-6xl mx-auto">
-
-    <!-- Заголовок секции -->
-    <div class="text-center mb-16 reveal">
-      <p class="label mb-4">Найдите свой стиль</p>
-      <h2 class="heading-lg" style="color:#1A1714;">Три вектора вашего пространства</h2>
-      <div class="divider mx-auto mt-5"></div>
-      <p class="text-sm mt-4" style="color:#A39E99;letter-spacing:0.05em;">
-        Каждый вектор — это философия жизни, воплощённая в материалах и свете
-      </p>
-    </div>
-
-    <!-- Карточки -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
-      <!-- I — Эхо классики -->
-      <div class="vector-card vector-animate group relative overflow-hidden cursor-pointer"
-           style="height:420px;background:#12121A;" data-delay="0">
-
-        <div class="parallax-layer absolute inset-0 w-full h-full"
-             style="will-change:transform;transition:transform 0.1s ease-out;">
-          <img src="/images/vector-classic.jpg"
-               alt="Эхо классики — классический интерьер"
-               class="absolute inset-0 w-full h-full object-cover"
-               style="opacity:0.65;transform:scale(1.12);"
-               onerror="this.style.display='none'" />
-        </div>
-
-        <div class="absolute inset-0 z-10"
-             style="background:linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.2) 55%, transparent 100%);"></div>
-
-        <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="roman-numeral font-display"
-                style="font-size:9rem;color:#2A2620;opacity:0.25;line-height:1;user-select:none;">I</span>
-        </div>
-
-        <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
-          <p class="text-[10px] tracking-[0.25em] uppercase mb-3" style="color:#4A4A5E;">Вектор I</p>
-          <h3 class="font-display text-2xl text-white mb-3">Эхо классики</h3>
-          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:12px;"></div>
-          <p class="text-sm leading-relaxed transition-all duration-500 max-h-0 overflow-hidden group-hover:max-h-20"
-             style="color:#8888A0;">
-            Элегантность вне времени. Баланс пропорций и света.
-          </p>
-        </div>
-      </div>
-
-      <!-- II — Честная фактура -->
-      <div class="vector-card vector-animate group relative overflow-hidden cursor-pointer"
-           style="height:420px;background:#0F0F14;" data-delay="180">
-
-        <div class="parallax-layer absolute inset-0 w-full h-full"
-             style="will-change:transform;transition:transform 0.1s ease-out;">
+        <div class="parallax-layer absolute inset-0"
+             style="will-change:transform;transition:transform 0.15s ease-out;">
           <img src="/images/vector-loft.jpg"
-               alt="Честная фактура — лофт интерьер"
+               alt="Честная фактура"
                class="absolute inset-0 w-full h-full object-cover"
-               style="opacity:0.65;transform:scale(1.12);"
+               style="opacity:0.7;transform:scale(1.1);transition:opacity 0.5s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1);"
                onerror="this.style.display='none'" />
         </div>
 
-        <div class="absolute inset-0 z-10"
-             style="background:linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.2) 55%, transparent 100%);"></div>
+        <div class="absolute inset-0 z-10 transition-opacity duration-500"
+             style="background:linear-gradient(to top, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.3) 50%, transparent 100%);"
+             data-gradient></div>
 
-        <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="roman-numeral font-display"
-                style="font-size:9rem;color:#2A2620;opacity:0.25;line-height:1;user-select:none;">II</span>
-        </div>
-
-        <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
-          <p class="text-[10px] tracking-[0.25em] uppercase mb-3" style="color:#4A4A5E;">Вектор II</p>
-          <h3 class="font-display text-2xl text-white mb-3">Честная фактура</h3>
-          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:12px;"></div>
-          <p class="text-sm leading-relaxed transition-all duration-500 max-h-0 overflow-hidden group-hover:max-h-20"
-             style="color:#8888A0;">
+        <div class="absolute bottom-0 left-0 right-0 p-7 z-20">
+          <p class="text-[10px] tracking-[0.25em] uppercase mb-2" style="color:#4A4A5E;">Вектор II</p>
+          <h3 class="font-display text-2xl text-white mb-2">Честная фактура</h3>
+          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:10px;"></div>
+          <p class="text-sm leading-relaxed" style="color:#8888A0;opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease, max-height 0.4s ease;" data-desc>
             Брутальная эстетика. Открытые текстуры и сталь.
           </p>
         </div>
-      </div>
+      </a>
 
       <!-- III — Тишина и воздух -->
-      <div class="vector-card vector-animate group relative overflow-hidden cursor-pointer"
-           style="height:420px;background:#111118;" data-delay="360">
+      <a href="/portfolio" class="vector-card vector-animate group relative overflow-hidden block no-underline"
+         style="height:360px;background:#111118;" data-delay="360">
 
-        <div class="parallax-layer absolute inset-0 w-full h-full"
-             style="will-change:transform;transition:transform 0.1s ease-out;">
+        <div class="parallax-layer absolute inset-0"
+             style="will-change:transform;transition:transform 0.15s ease-out;">
           <img src="/images/vector-zen.jpg"
-               alt="Тишина и воздух — минималистичный интерьер"
+               alt="Тишина и воздух"
                class="absolute inset-0 w-full h-full object-cover"
-               style="opacity:0.65;transform:scale(1.12);"
+               style="opacity:0.7;transform:scale(1.1);transition:opacity 0.5s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1);"
                onerror="this.style.display='none'" />
         </div>
 
-        <div class="absolute inset-0 z-10"
-             style="background:linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.2) 55%, transparent 100%);"></div>
+        <div class="absolute inset-0 z-10 transition-opacity duration-500"
+             style="background:linear-gradient(to top, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.3) 50%, transparent 100%);"
+             data-gradient></div>
 
-        <div class="absolute inset-0 flex items-center justify-center z-0">
-          <span class="roman-numeral font-display"
-                style="font-size:9rem;color:#2A2620;opacity:0.25;line-height:1;user-select:none;">III</span>
-        </div>
-
-        <div class="absolute bottom-0 left-0 right-0 p-8 z-20">
-          <p class="text-[10px] tracking-[0.25em] uppercase mb-3" style="color:#4A4A5E;">Вектор III</p>
-          <h3 class="font-display text-2xl text-white mb-3">Тишина и воздух</h3>
-          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:12px;"></div>
-          <p class="text-sm leading-relaxed transition-all duration-500 max-h-0 overflow-hidden group-hover:max-h-20"
-             style="color:#8888A0;">
+        <div class="absolute bottom-0 left-0 right-0 p-7 z-20">
+          <p class="text-[10px] tracking-[0.25em] uppercase mb-2" style="color:#4A4A5E;">Вектор III</p>
+          <h3 class="font-display text-2xl text-white mb-2">Тишина и воздух</h3>
+          <div style="width:24px;height:1px;background:#C8A882;margin-bottom:10px;"></div>
+          <p class="text-sm leading-relaxed" style="color:#8888A0;opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease, max-height 0.4s ease;" data-desc>
             Максимум света. Натуральные материалы и покой.
           </p>
         </div>
-      </div>
+      </a>
 
     </div>
 
@@ -249,29 +118,12 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const delay  = parseInt(entry.target.dataset.delay) || 0;
-      const card   = entry.target;
-      const numeral = card.querySelector('.roman-numeral');
+      const delay = parseInt(entry.target.dataset.delay) || 0;
+      const card  = entry.target;
 
       setTimeout(() => {
         card.style.setProperty('opacity',   '1',            'important');
         card.style.setProperty('transform', 'translateY(0)', 'important');
-
-        if (numeral) {
-          numeral.style.transition = 'all 1.4s cubic-bezier(0.16, 1, 0.3, 1)';
-          numeral.style.setProperty('color',       '#C8A882', 'important');
-          numeral.style.setProperty('opacity',     '1',       'important');
-          numeral.style.setProperty('text-shadow',
-            '0 0 60px #C8A882, 0 0 120px #C8A882, 0 0 200px #C8A882', 'important');
-
-          setTimeout(() => {
-            numeral.animate([
-              { textShadow: '0 0 60px #C8A882, 0 0 120px #C8A882, 0 0 200px #C8A882', opacity: 1   },
-              { textShadow: '0 0 20px #C8A882, 0 0 50px #C8A882,  0 0 80px #C8A882',  opacity: 0.6 },
-              { textShadow: '0 0 60px #C8A882, 0 0 120px #C8A882, 0 0 200px #C8A882', opacity: 1   },
-            ], { duration: 3200, iterations: Infinity, easing: 'ease-in-out' });
-          }, 1400);
-        }
         observer.unobserve(card);
       }, delay);
     });
@@ -279,42 +131,63 @@
 
   cards.forEach(card => {
     card.style.opacity   = '0';
-    card.style.transform = 'translateY(60px)';
-    card.style.transition = 'opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
+    card.style.transform = 'translateY(50px)';
+    card.style.transition = 'opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)';
     observer.observe(card);
   });
 
-  // ── Параллакс при движении мыши ──────────────────────────────
-  // Только на десктопе — на мобильном отключаем
+  // ── Hover эффекты ────────────────────────────────────────────
+  // Только десктоп
   if (window.matchMedia('(hover: hover)').matches) {
     cards.forEach(card => {
-      const layer = card.querySelector('.parallax-layer');
-      if (!layer) return;
+      const img      = card.querySelector('img');
+      const gradient = card.querySelector('[data-gradient]');
+      const desc     = card.querySelector('[data-desc]');
+      const layer    = card.querySelector('.parallax-layer');
 
-      card.addEventListener('mousemove', (e) => {
-        const rect   = card.getBoundingClientRect();
-        // Позиция курсора внутри карточки от -1 до 1
-        const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
-        const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
-
-        // Смещение максимум 12px — тонко, не агрессивно
-        const moveX = x * 12;
-        const moveY = y * 12;
-
-        layer.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      // Hover: фото чёткое, описание появляется
+      card.addEventListener('mouseenter', () => {
+        if (img) {
+          img.style.opacity   = '1';
+          img.style.transform = 'scale(1.05)';
+        }
+        if (gradient) gradient.style.opacity = '0.6';
+        if (desc) {
+          desc.style.opacity   = '1';
+          desc.style.maxHeight = '60px';
+        }
       });
 
       card.addEventListener('mouseleave', () => {
-        // Плавно возвращаем в исходное положение
-        layer.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
-        layer.style.transform  = 'translate(0px, 0px)';
-        setTimeout(() => {
-          layer.style.transition = 'transform 0.1s ease-out';
-        }, 600);
+        if (img) {
+          img.style.opacity   = '0.7';
+          img.style.transform = 'scale(1.1)';
+        }
+        if (gradient) gradient.style.opacity = '1';
+        if (desc) {
+          desc.style.opacity   = '0';
+          desc.style.maxHeight = '0';
+        }
+        if (layer) {
+          layer.style.transition = 'transform 0.6s cubic-bezier(0.22,1,0.36,1)';
+          layer.style.transform  = 'translate(0,0)';
+          setTimeout(() => {
+            layer.style.transition = 'transform 0.15s ease-out';
+          }, 600);
+        }
+      });
+
+      // Параллакс
+      card.addEventListener('mousemove', (e) => {
+        if (!layer) return;
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+        const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+        layer.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
       });
 
       card.addEventListener('mouseenter', () => {
-        layer.style.transition = 'transform 0.1s ease-out';
+        if (layer) layer.style.transition = 'transform 0.15s ease-out';
       });
     });
   }
