@@ -19,7 +19,7 @@ import Calculator from '../components/Calculator.astro';
     <!-- Фоновое видео. Файл: public/images/hero.mp4 -->
 <video
   class="absolute inset-0 w-full h-full object-cover"
-  style="opacity:0.45;"
+  style="opacity:0.75;"
   autoplay
   muted
   loop
@@ -31,13 +31,13 @@ import Calculator from '../components/Calculator.astro';
 
     <!-- Градиент поверх фото -->
     <div class="absolute inset-0 pointer-events-none"
-         style="background: linear-gradient(
-           to bottom,
-           rgba(10,10,15,0.72) 0%,
-           rgba(10,10,15,0.45) 40%,
-           rgba(10,10,15,0.78) 80%,
-           #0A0A0F 100%
-         );"></div>
+         style="background:linear-gradient(
+  to bottom,
+  rgba(10,10,15,0.55) 0%,
+  rgba(10,10,15,0.25) 40%,
+  rgba(10,10,15,0.65) 80%,
+  #0A0A0F 100%
+);"
 
     <!-- Контент hero -->
     <div class="relative z-10 max-w-3xl w-full">
