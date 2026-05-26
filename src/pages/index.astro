@@ -16,15 +16,18 @@ import Calculator from '../components/Calculator.astro';
   <section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
            style="background:#0A0A0F;">
 
-    <!-- Фоновое фото. Положи файл: public/images/hero.jpg
-         Пока фото нет — виден градиент ниже, ничего не сломается -->
-    <img
-      src="/images/hero.jpg"
-      alt="Интерьер ЦЕЛОЕ — ремонт квартир в Новороссийске"
-      class="absolute inset-0 w-full h-full object-cover"
-      style="opacity:0.55;"
-      onerror="this.style.display='none'"
-    />
+    <!-- Фоновое видео. Файл: public/images/hero.mp4 -->
+<video
+  class="absolute inset-0 w-full h-full object-cover"
+  style="opacity:0.45;"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+>
+  <source src="/images/hero.mp4" type="video/mp4" />
+</video>
 
     <!-- Градиент поверх фото -->
     <div class="absolute inset-0 pointer-events-none"
