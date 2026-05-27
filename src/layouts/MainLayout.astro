@@ -1,6 +1,20 @@
 ---
 import CookieBanner from '../components/CookieBanner.astro';
 import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const {
+  title       = 'Целое — Цельный ремонт',
+  description = 'ЦЕЛОЕ — ремонт квартир под ключ в Новороссийске. Фиксированная цена, сдача в срок, команда без субподрядчиков.',
+  ogTitle       = title,
+  ogDescription = description,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -9,11 +23,11 @@ import '../styles/global.css';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Целое — Цельный ремонт</title>
-    <meta name="description" content="ЦЕЛОЕ — ремонт квартир под ключ в Новороссийске. Фиксированная цена, сдача в срок, команда без субподрядчиков." />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="keywords" content="ремонт квартир Новороссийск, ремонт под ключ, отделка квартир, дизайн интерьера Новороссийск" />
-    <meta property="og:title" content="Целое — Цельный ремонт" />
-    <meta property="og:description" content="Ремонт квартир под ключ в Новороссийске. Фиксированная цена. Сдача день в день." />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://celoe-remont.pages.dev/" />
     <!-- Yandex.Metrika counter -->
@@ -122,7 +136,6 @@ import '../styles/global.css';
     <footer style="background:#1A1714;color:rgba(255,255,255,0.45);">
       <div class="max-w-6xl mx-auto px-6 py-16">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-
           <div>
             <p class="font-display text-2xl tracking-widest mb-3" style="color:#fff;">ЦЕЛОЕ</p>
             <p class="text-xs tracking-widest uppercase leading-relaxed" style="color:rgba(255,255,255,0.3);">
@@ -130,7 +143,6 @@ import '../styles/global.css';
             </p>
             <div class="w-8 h-px mt-6" style="background:#C8A882;"></div>
           </div>
-
           <div>
             <p class="text-[10px] tracking-[0.25em] uppercase mb-5" style="color:rgba(255,255,255,0.2);">Навигация</p>
             <nav class="flex flex-col gap-3">
@@ -142,14 +154,11 @@ import '../styles/global.css';
               <a href="/contacts"              class="footer-link">Контакты</a>
             </nav>
           </div>
-
           <div>
             <p class="text-[10px] tracking-[0.25em] uppercase mb-5" style="color:rgba(255,255,255,0.2);">Связаться</p>
             <a href="tel:+79615192400"
                class="block font-display text-xl tracking-widest no-underline mb-2 transition-colors duration-300 footer-phone"
-               style="color:#fff;">
-              +7 (961) 519-24-00
-            </a>
+               style="color:#fff;">+7 (961) 519-24-00</a>
             <p class="text-xs tracking-wider mb-6" style="color:rgba(255,255,255,0.22);">Новороссийск</p>
             <a href="/zero-day"
                class="inline-flex items-center gap-2 text-xs tracking-widest uppercase no-underline hover:opacity-60 transition-opacity duration-300"
@@ -161,7 +170,6 @@ import '../styles/global.css';
             </a>
           </div>
         </div>
-
         <div class="border-t pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
              style="border-color:rgba(255,255,255,0.07);">
           <p class="text-[10px] tracking-widest uppercase" style="color:rgba(255,255,255,0.18);">
@@ -192,7 +200,6 @@ import '../styles/global.css';
     </a>
 
     <script>
-      // Умная шапка
       const header   = document.getElementById('site-header');
       const logo     = document.getElementById('logo');
       const navItems = document.querySelectorAll('.nav-item');
@@ -226,7 +233,6 @@ import '../styles/global.css';
       updateHeader();
       window.addEventListener('scroll', updateHeader, { passive: true });
 
-      // Бургер
       const burger     = document.getElementById('burger');
       const mobileMenu = document.getElementById('mobile-menu');
       let menuOpen = false;
@@ -265,7 +271,6 @@ import '../styles/global.css';
       });
       document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', closeMenu));
 
-      // Кнопка звонка
       const fixedCall = document.getElementById('fixed-call');
       const callLabel = document.getElementById('call-label');
       window.addEventListener('scroll', () => {
@@ -284,7 +289,6 @@ import '../styles/global.css';
         callLabel.style.maxWidth = '0';
       });
 
-      // Глобальный IntersectionObserver для .reveal
       const revealObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -296,7 +300,7 @@ import '../styles/global.css';
       document.querySelectorAll('.reveal, .reveal-fade, .reveal-line')
         .forEach(el => revealObs.observe(el));
     </script>
-<CookieBanner />
+    <CookieBanner />
   </body>
 </html>
 
