@@ -27,7 +27,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        <!-- Левая колонка: контакты + форма -->
+        <!-- Левая колонка -->
         <div class="flex flex-col gap-6">
 
           <!-- Телефон и email -->
@@ -42,6 +42,7 @@ import MainLayout from '../layouts/MainLayout.astro';
                  onmouseover="this.style.color='#C8A882'" onmouseout="this.style.color='#1A1714'">
                 +7 (961) 519-24-00
               </a>
+              <p class="text-xs mt-1" style="color:#A39E99;">Перезвоним в течение часа</p>
             </div>
 
             <div class="border-t border-celoe-border pt-6">
@@ -55,13 +56,36 @@ import MainLayout from '../layouts/MainLayout.astro';
             </div>
 
             <div class="border-t border-celoe-border pt-6 mt-6">
-              <p class="text-xs tracking-widest uppercase mb-2" style="color:#A39E99;">Город</p>
-              <p style="color:#6B6560;">Новороссийск</p>
+              <p class="text-xs tracking-widest uppercase mb-2" style="color:#A39E99;">График работы</p>
+              <p class="text-sm" style="color:#6B6560;">Пн — Пт: 9:00 — 18:00</p>
+              <p class="text-sm" style="color:#6B6560;">Сб: 10:00 — 15:00</p>
+            </div>
+          </div>
+
+          <!-- Зона работы -->
+          <div class="border border-celoe-border p-8 reveal delay-1" style="background:#FAF7F2;">
+            <p class="label mb-4">Зона работы</p>
+            <p class="text-sm leading-relaxed mb-5" style="color:#6B6560;">
+              Работаем по всему Новороссийску и Краснодарскому краю. Выезжаем на объект бесплатно.
+            </p>
+
+            <!-- Карта Новороссийска через Яндекс -->
+            <div class="overflow-hidden border border-celoe-border reveal delay-2" style="height:200px;">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=37.7685%2C44.7238&z=12&l=map&mode=search&text=Новороссийск"
+                width="100%"
+                height="200"
+                frameborder="0"
+                allowfullscreen
+                style="border:0;display:block;"
+                title="Новороссийск на карте"
+                loading="lazy">
+              </iframe>
             </div>
           </div>
 
           <!-- Блок доверия -->
-          <div class="border border-celoe-border p-8 reveal delay-1" style="background:#FAF7F2;">
+          <div class="border border-celoe-border p-8 reveal delay-2" style="background:#FAF7F2;">
             <p class="label mb-5">Почему нам доверяют</p>
             <div class="space-y-4">
               <div class="flex items-start gap-3">
@@ -158,7 +182,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 </style>
 
 <script>
-  // Показываем успех если redirect вернул ?sent=true
   if (window.location.search.includes('sent=true')) {
     const form = document.getElementById('contact-form');
     const msg  = document.getElementById('success-msg');
