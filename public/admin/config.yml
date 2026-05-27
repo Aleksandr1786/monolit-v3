@@ -2,8 +2,7 @@ backend:
   name: github
   repo: Aleksandr1786/monolit-v3
   branch: main
-  base_url: https://celoe-remont.pages.dev
-  auth_endpoint: api/auth
+  base_url: https://github-oauth.sveltia.app
 
 media_folder: public/images
 public_folder: /images
@@ -12,19 +11,9 @@ locale: ru
 
 collections:
 
-  # ── Главная страница ─────────────────────────────────────
   - name: home
     label: Главная страница
     files:
-      - name: hero
-        label: Hero секция
-        file: src/content/home/hero.json
-        fields:
-          - { label: Заголовок, name: title, widget: string }
-          - { label: Подзаголовок, name: subtitle, widget: string }
-          - { label: Описание, name: description, widget: text }
-          - { label: Текст кнопки, name: button_text, widget: string }
-
       - name: stats
         label: Блок статистики
         file: src/content/home/stats.json
@@ -32,7 +21,6 @@ collections:
           - { label: Завершённых объектов, name: projects, widget: number }
           - { label: Лет на рынке, name: years, widget: number }
 
-  # ── Калькулятор ──────────────────────────────────────────
   - name: calculator
     label: Калькулятор
     files:
@@ -48,14 +36,13 @@ collections:
               - { label: Цена за м², name: price, widget: number }
               - { label: Описание, name: description, widget: text }
 
-  # ── Портфолио ────────────────────────────────────────────
   - name: portfolio
     label: Портфолио
     folder: src/content/portfolio
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: Название проекта, name: title, widget: string }
+      - { label: Название, name: title, widget: string }
       - label: Стиль
         name: category
         widget: select
@@ -63,22 +50,19 @@ collections:
           - { label: Эхо классики, value: classic }
           - { label: Честная фактура, value: industrial }
           - { label: Тишина и воздух, value: minimal }
-      - { label: Фотография, name: image, widget: image }
-      - { label: Описание, name: description, widget: text, required: false }
+      - { label: Фото, name: image, widget: image }
 
-  # ── Отзывы ───────────────────────────────────────────────
   - name: reviews
     label: Отзывы
     folder: src/content/reviews
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: Имя клиента, name: name, widget: string }
+      - { label: Имя, name: name, widget: string }
       - { label: Тип квартиры, name: apartment, widget: string }
       - { label: Пакет, name: package, widget: string }
-      - { label: Текст отзыва, name: text, widget: text }
+      - { label: Текст, name: text, widget: text }
 
-  # ── Контакты ─────────────────────────────────────────────
   - name: contacts
     label: Контакты
     files:
