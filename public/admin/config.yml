@@ -2,7 +2,7 @@ backend:
   name: github
   repo: Aleksandr1786/monolit-v3
   branch: main
-  base_url: public/admin/config.yml
+  base_url: https://decap-proxy.netlify.app
 
 media_folder: public/images
 public_folder: /images
