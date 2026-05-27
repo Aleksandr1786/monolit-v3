@@ -18,8 +18,8 @@ const {
 ---
 
 <!doctype html>
-<html lang="ru">
-  <head>
+<html lang="ru">  
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -42,6 +42,91 @@ const {
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/109412473" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+     <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ЦЕЛОЕ",
+      "description": "Ремонт квартир под ключ в Новороссийске. Фиксированная цена, сдача в срок, команда без субподрядчиков.",
+      "url": "https://celoe-remont.pages.dev",
+      "telephone": "+79615192400",
+      "email": "celoe.remont@mail.ru",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Новороссийск",
+        "addressRegion": "Краснодарский край",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "44.7238",
+        "longitude": "37.7685"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "priceRange": "от 6000 ₽/м²",
+      "image": "https://celoe-remont.pages.dev/images/hero.jpg",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "6"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Анна К." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Боялась, что смета вырастет. Здесь цена с первого дня до последнего была одинаковой."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Михаил Д." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Камеры на объекте — это гениально. Сдали точно в срок, как и обещали в договоре."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Дмитрий Р." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Нулевой День меня поразил — они спрашивали не о плитке, а о том как я живу."
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Пакеты ремонта",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Основа",
+            "description": "Чистовая отделка стен, потолков и полов. Электрика и сантехника.",
+            "price": "6000",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "name": "Целое",
+            "description": "Полный ремонт под ключ с дизайн-проектом и фиксированной сметой.",
+            "price": "9500",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "name": "Архитектура",
+            "description": "Авторский дизайн-проект, видеонаблюдение, цифровой паспорт квартиры.",
+            "price": "16000",
+            "priceCurrency": "RUB"
+          }
+        ]
+      }
+    }
+    </script>
   </head>
 
   <body class="bg-celoe-bg text-celoe-text-primary font-body">
